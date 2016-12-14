@@ -12,7 +12,7 @@ For controllers you add namespaces like so:
 	<?php
 	namespace Filtration\Controller;
 
-	Class MyController extends \Bdown\Core\Controller
+	Class MyController extends \Filtration\Core\Controller
 	{
 
 	}
@@ -36,7 +36,7 @@ To access your model in your controller, use the `use` function:
 	<?php
 	namespace Filtration\Controller;
 
-	use Bdown\Model\MyModel;
+	use Filtration\Model\MyModel;
 	
 	Class MyController extends \Filtration\Core\Controller
 	{

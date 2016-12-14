@@ -4,8 +4,7 @@ I plan on bringing this back, so will edit it the source and fixing parts, do no
 
 I will upload the SQL in the future (again) when it's done. Some methods are bloated, that's because I haven't got around to them, some queries don't have transactions; I plan on adding them, and fixing the withdraw part (check user's trade history, make sure it adds up)
 
-Give me ideas regarding storage, cold/hot/luke warm. Anyway, if you would like to help with developement, for from developement branch, never to the main one.
-
+Give me ideas regarding storage, cold/hot/luke warm. Anyway, if you would like to help with developement, fork developement branch.
 
 For controllers you add namespaces like so:
 

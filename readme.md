@@ -10,7 +10,7 @@ Give me ideas regarding storage, cold/hot/luke warm. Anyway, if you would like t
 For controllers you add namespaces like so:
 
 	<?php
-	namespace Bdown\Controller;
+	namespace Filtration\Controller;
 
 	Class MyController extends \Bdown\Core\Controller
 	{
@@ -21,7 +21,7 @@ For controllers you add namespaces like so:
  For models you do:
  
 	<?php 
-	namespace Bdown\Model;
+	namespace Filtration\Model;
 
 	Class MyModel
 	{
@@ -34,11 +34,11 @@ For controllers you add namespaces like so:
 To access your model in your controller, use the `use` function:
 
 	<?php
-	namespace Bdown\Controller;
+	namespace Filtration\Controller;
 
 	use Bdown\Model\MyModel;
 	
-	Class MyController extends \Bdown\Core\Controller
+	Class MyController extends \Filtration\Core\Controller
 	{
 		public function index(){
 			// access it here

@@ -1,5 +1,10 @@
 Okay, so let me get started. Do not use this as-is. I originally wrote this a few years back, and decided to clean up the code. I have removed lots of methods, and added namespaces. 
-I have stopped working on this so haven't added all the namespaces in, so you will need to do that yourself.
+I plan on bringing this back, so will edit it the source and fixing parts, do not fork yet. Once it's at a good stage of development, then you can fork, but at the moment, 
+it's not functioning fully yet. I will upload the SQL in the future (again) when it's done. Some methods are bloated, that's because I haven't got around to them, some queries don't 
+have transactions; I plan on adding them, and fixing the withdraw part (check user's trade history, make sure it adds up)
+
+Give me ideas regarding storage, cold/hot/luke warm. Anyway, if you would like to help with developement, for from developement branch, never to the main one.
+
 
 For controllers you add namespaces like so:
 
@@ -40,12 +45,8 @@ To access your model in your controller, use the `use` function:
 		}
 	}
 	
-Now, throughout the code, you will notice bloated methods; the reason for this is because I never got round to putting them inside models and controllers, so you will have to do that yourself
-Some methods have also been replaced, so keep an eye out for them, $this->encrypt for example has been removed. This will take some time to get working, but should bypass the starting-blocks
-and have a pre-built framework for your bitcoin exchange.
 
 
-I take no responsibilty for this, I built it a long time a go, it was dwarfed by another project and rushed, hence why I decided to clean it up a little.
 
 
 #Installation#

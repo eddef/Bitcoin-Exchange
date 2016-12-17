@@ -1,3 +1,8 @@
+<?php
+/*
+ * This is where all the javascript goes when I clean up the view files, then it will be put inside another file and used
+ * I just put it here so I know what it's for and where it goes. This file is not linked anywhere.
+*/
 <script>
 $(function()
 {

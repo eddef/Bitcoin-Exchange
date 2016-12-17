@@ -1,4 +1,7 @@
 <?php
+namespace Filtration\Model;
+
+use Filtration\Core\DatabaseFactory;
 
 Class PagesModel
 {

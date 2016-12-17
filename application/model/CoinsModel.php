@@ -2,6 +2,7 @@
 namespace Filtration\Model;
 
 use Filtration\Core\DatabaseFactory;
+
 Class CoinsModel
 {
 

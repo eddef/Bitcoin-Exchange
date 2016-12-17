@@ -1,4 +1,7 @@
 <?php
+namespace Filtration\Model;
+
+use Filtration\Core\DatabaseFactory;
 
 class CronJobModel
 {
@@ -40,7 +43,7 @@ class CronJobModel
 				//okay it doesn't exist in the database
 				if (!$checkdeps) {
                     
-					/
+					//
 					$date = date("Y-m-d h:i:s");
                     
 					//sql to run

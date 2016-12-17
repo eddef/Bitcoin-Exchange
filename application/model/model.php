@@ -1,5 +1,8 @@
 <?php
-
+/*
+ * This file is an old file. The functions in here need to be re-written and put inside the relevent models
+ * I am just keeping them for the time being so I know where they they go, and what they're for.
+*/
 class Model {
 
  

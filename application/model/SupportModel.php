@@ -1,4 +1,8 @@
 <?php
+namespace Filtration\Model;
+
+use Filtration\Core\DatabaseFactory;
+use Filtration\Core\Session;
 
 Class SupportModel
 {
@@ -8,8 +12,8 @@ Class SupportModel
 		$database = DatabaseFactory::getFactory()->getConnection();
 		
 		//sql to run
-		$sql = "SELECT userguide_title, 
-					   userguide_url
+		$sql = "SELECT guide_title, 
+					   guide_id
 				FROM userguides";
         
 		//run the sql
@@ -36,21 +40,21 @@ Class SupportModel
 		return $faqs->fetchAll();
     }
 	
-    public function viewguide($SITE_URL) 
+    public function viewguide($id) 
 	{
 		//iniate the database
 		$database = DatabaseFactory::getFactory()->getConnection();
 		
 		//sql to run
-		$sql = "SELECT userguide_message, 
-					   userguide_SITE_URL, 
-					   userguide_title 
+		$sql = "SELECT guide_message, 
+					   guide_id, 
+					   guide_title 
 				FROM userguides 
-				WHERE userguide_SITE_URL = ?";
+				WHERE guide_id = ?";
 				
 		//run the sql
         $getguide = $database->prepare($sql);
-        $getguide->execute(array($SITE_URL));
+        $getguide->execute(array($id));
 		
 		//return the result
 		return $getguide->fetch();
@@ -73,7 +77,7 @@ Class SupportModel
 			
 			//run the sql
             $tickets = $database->prepare($sql);
-            $tickets->execute(array(Session::get('id'), $type));
+            $tickets->execute(array(Session::get('user_id'), $type));
         else:
 		
 			//sql to run
@@ -83,7 +87,7 @@ Class SupportModel
 			
 			//run the sql
             $tickets = $database->prepare($sql2);
-            $tickets->execute(array(Session::get('id')));
+            $tickets->execute(array(Session::get('user_id')));
         endif;
         if (isset($admin)):
 		
@@ -217,7 +221,7 @@ Class SupportModel
 	
 	public static function ticket_reply($ticket)
 	{
-		if(!SupportModel::ticket($ticket, Session::get('id'))):
+		if(!SupportModel::ticket($ticket, Session::get('user_id'))):
 			//doesn't exist or belong to them
 		endif;
            

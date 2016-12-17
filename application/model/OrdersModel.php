@@ -25,7 +25,7 @@ Class OrdersModel
         
 		//run the sql
 		$query = $database->prepare($sql);
-        $query->execute(array($coin, Session::get('id'), $type));
+        $query->execute(array($coin, Session::get('user_id'), $type));
         
 		//return the results
 		return $query->fetchAll();
@@ -43,7 +43,7 @@ Class OrdersModel
 
         //check open orders
         $openorders = $database->prepare($sql);
-        $openorders->execute(array(Session::get('id'), $order));
+        $openorders->execute(array(Session::get('user_id'), $order));
 
         //return the results
         return $openorders->fetchAll();
@@ -63,7 +63,7 @@ Class OrdersModel
         
 		//run the sql
 		$checkfield = $database->prepare($sql);
-        $checkfield->execute(array($id, Session::get('id')));
+        $checkfield->execute(array($id, Session::get('user_id')));
         
 		//return the results
 		return $checkfield->fetchColumn();
@@ -84,7 +84,7 @@ Class OrdersModel
 				
 		//run the sql
         $transaction = $database->prepare($sql);
-        $transaction->execute(array(Session::get('id')));
+        $transaction->execute(array(Session::get('user_id')));
         
 		//return the data
 		return $transaction->fetchAll();
@@ -103,7 +103,7 @@ Class OrdersModel
 				
 		//run the sql
         $query = $database->prepare($sql);
-        $query->execute(array($coin, Session::Get('id')));
+        $query->execute(array($coin, Session::get('user_id')));
         
 		//return the results
 		return $query->fetchAll();
@@ -166,7 +166,7 @@ Class OrdersModel
 		
 		//run the sql
 		$deleteorder = $database->prepare($sql);
-        $deleteorder->execute(array($id, $order, Session::get('id')));
+        $deleteorder->execute(array($id, $order, Session::get('user_id')));
 		
 		//the results?
 		if($deleteorder->rowCount()):
@@ -201,7 +201,7 @@ Class OrdersModel
 
         //run the sql
         $sellingorder = $database->prepare($sql);
-        $sellingorder->execute(array($coinvalue, $order, session::get('id')));
+        $sellingorder->execute(array($coinvalue, $order, Session::get('user_id')));
         
         //return the sql
         return $sellingorder->fetch();		

@@ -1,63 +1,32 @@
-<script type="text/javascript">
-	jQuery(document).ready(function ($)
-	{
-		$("#coins-2").dataTable(
-				{
-					aLengthMenu: [
-						[10, 25, 50, 100, -1],
-						[10, 25, 50, 100, "5"]
-					]
-				});
-		$("#coins-1").dataTable({
-			dom: "t" + "<'row'<'col-xs-6'i><'col-xs-6'p>>",
-			aoColumns: [
-				{bSortable: false},
-				null,
-				null,
-				null,
-				null
-			],
-		});
-
-
-	});
-</script>
-<div class="panel col-sm-9">
-    <div class="panel-heading">
-        <h3 class="panel-title"><?php echo Filtration\Core\System::translate("Coins"); ?></h3>
+<div class="col-sm-12">
+    <div class="btn-group pull-right m-t-15">
+        <a href="<?php echo ADMIN_SITE_URL; ?>/addcoin" class="btn btn-default">Add Coin</a>
     </div>
+
+    <h4 class="page-title">Coins</h4>
+    <p class="text-muted page-title-alt">Here you can manage the markets on your exchange</p>
+</div>
+
+<div class="panel col-sm-12">
     <div class="panel-body">
 
         <table class="table table-bordered table-striped" id="coins-2">      
             <thead>
-                <tr role="row">
-                    <th class="no-sorting sorting_asc" rowspan="1" colspan="1" aria-label="
-                        " style="width: 16px;">
-            <div class="cbr-replaced">
-                <div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div>
-                <div class="cbr-state"><span></span></div>
-            </div>
-            </th>
-            <th><?php echo Filtration\Core\System::translate("Coin"); ?></th>
-            <th><?php echo Filtration\Core\System::translate("Description"); ?></th>
-            <th><?php echo Filtration\Core\System::translate("Title"); ?></th>
-            <th><?php echo Filtration\Core\System::translate("Enabled"); ?></th>
-            <th><?php echo Filtration\Core\System::translate("Actions"); ?></th>
-
-            </tr>
+                <tr>
+                    <th><?php echo Filtration\Core\System::translate("Coin"); ?></th>
+                    <th><?php echo Filtration\Core\System::translate("Description"); ?></th>
+                    <th><?php echo Filtration\Core\System::translate("Title"); ?></th>
+                    <th><?php echo Filtration\Core\System::translate("Enabled"); ?></th>
+                    <th><?php echo Filtration\Core\System::translate("Actions"); ?></th>
+                </tr>
             </thead>
+
             <tbody class="middle-align">
                 <?php foreach ($this->coin as $coins) { ?>
-                    <tr role="row" class="odd">
-                        <td class="sorting_1">
-                            <div class="cbr-replaced">
-                                <div class="cbr-input"><input type="checkbox" class="cbr cbr-done"></div>
-                                <div class="cbr-state"><span></span></div>
-                            </div>
-                        </td>
-                        <td><?php echo System::escape($coins->coin_coin); ?></td>
-                        <td><?php echo System::escape($coins->coin_description); ?></td>
-                        <td><?php echo System::escape($coins->coin_title); ?></td>
+                    <tr>
+                        <td><?php echo Filtration\Core\System::escape($coins->coin_coin); ?></td>
+                        <td><?php echo Filtration\Core\System::escape($coins->coin_description); ?></td>
+                        <td><?php echo Filtration\Core\System::escape($coins->coin_title); ?></td>
                         <td>
                             <?php
                             if ($coins->coin_enabled == 'enabled') {
@@ -68,10 +37,10 @@
                             ?>
                         </td>
                         <td>
-                            <a href="<?php echo ADMIN_SITE_URL; ?>/editcoin/<?php echo System::escape($coins->coin_id); ?>" class="btn btn-secondary btn-sm btn-icon icon-left">
+                            <a href="<?php echo ADMIN_SITE_URL; ?>/editcoin/<?php echo Filtration\Core\System::escape($coins->coin_id); ?>" class="btn btn-info btn-sm btn-icon icon-left">
                                 Edit
                             </a>
-                            <a href="<?php echo ADMIN_SITE_URL;?>/deletecoin/<?php echo System::escape($coins->coin_id); ?>" class="btn btn-danger btn-sm btn-icon icon-left">
+                            <a href="<?php echo ADMIN_SITE_URL;?>/deletecoin/<?php echo Filtration\Core\System::escape($coins->coin_id); ?>" class="btn btn-danger btn-sm btn-icon icon-left">
                                 Delete
                             </a>
                         </td>

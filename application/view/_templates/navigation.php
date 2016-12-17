@@ -62,51 +62,88 @@
 
             	<li class="text-muted menu-title">Navigation</li>
 
-                <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-dashboard"></i><span> Dashboard </span></a>
-                    <ul class="list-unstyled">
-                        <li><a href="<?php echo SURL; ?>dashboard/deposit"> Deposit/Withdraw</a></li>
-                        <li><a href="<?php echo SURL; ?>dashboard/trades"> Trades</a></li>
-                        <li><a href="<?php echo SURL; ?>dashboard/transactions"> Transactions</a></li>
-                    </ul>
-                </li>
+                <?php if(Filtration\Model\UserModel::logged_in() == true){ ?>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-dashboard"></i><span> Dashboard </span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="<?php echo SURL; ?>dashboard/deposit"> Deposit/Withdraw</a></li>
+                            <li><a href="<?php echo SURL; ?>dashboard/trades"> Trades</a></li>
+                            <li><a href="<?php echo SURL; ?>dashboard/transactions"> Transactions</a></li>
+                        </ul>
+                    </li>
 
-                <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user"></i><span> Account </span></a>
-                    <ul class="list-unstyled">
-                        <li><a href="<?php echo SURL; ?>security/security"> Security</a></li>
-                        <li><a href="<?php echo SURL; ?>user/edit/"> Edit</a></li>
-                        <li><a href="<?php echo SURL; ?>user/information/"> Information</a></li>
-                    </ul>
-                </li>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user"></i><span> Account </span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="<?php echo SURL; ?>security/security"> Security</a></li>
+                            <li><a href="<?php echo SURL; ?>user/edit/"> Edit</a></li>
+                            <li><a href="<?php echo SURL; ?>user/information/"> Information</a></li>
+                        </ul>
+                    </li>
 
-                <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-key"></i><span> API </span></a>
-                    <ul class="list-unstyled">
-                        <li><a href="<?php echo SURL; ?>api"> Documentation</a></li>
-                        <li><a href="<?php echo SURL; ?>api/api/"> My Keys</a></li>
-                    </ul>
-                </li>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-key"></i><span> API </span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="<?php echo SURL; ?>api"> Documentation</a></li>
+                            <li><a href="<?php echo SURL; ?>api/api/"> My Keys</a></li>
+                        </ul>
+                    </li>
 
-                <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user"></i><span> Help</span></a>
-                    <ul class="list-unstyled">
-                        <li><a href="<?php echo SURL; ?>fqq"> FAQ</a></li>
-                        <li><a href="<?php echo SURL; ?>notification/messages/"> Messages</a></li>
-                        <li><a href="<?php echo SURL; ?>help"> Support</a></li>
-                    </ul>
-                </li>
-				
-				<div id="usersidebar">
-					<p class="header"><?php echo Filtration\Core\System::translate("Welcome back"); ?></p> 
-					<p class="info" style="color:white;"><?php echo System::escape($user->user_username); ?><br><br>
-						<?php if ($user->user_detailverified == 0): ?>
-							<a href="<?php echo SITE_URL; ?>dashboard/verify" class="btn btn-xs btn-danger" style="width:100%; color:white;"><?php echo Filtration\Core\System::translate("Verify now!"); ?></a></p>
-					<?php else: ?>
-						<div class="btn btn-xs btn-success" style="width:100%"><?php echo Filtration\Core\System::translate("Verified"); ?></div></p>
-					<?php endif; ?>
-				</div>
+                    <li class="has_sub">
+                        <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-user"></i><span> Help</span></a>
+                        <ul class="list-unstyled">
+                            <li><a href="<?php echo SURL; ?>fqq"> FAQ</a></li>
+                            <li><a href="<?php echo SURL; ?>notification/notifications/"> Notification</a></li>
+                            <li><a href="<?php echo SURL; ?>help"> Support</a></li>
+                        </ul>
+                    </li>
 
+                    <?php if (Filtration\Model\UserModel::user()->user_detailverified == 'unverified'){ ?>
+                        <li class="has_sub alert-danger">
+                            <a href="<?php echo SURL; ?>dashboard/verify" class="waves-effect">
+                                <i class="fa fa-exclamation"></i>
+                                <span> <?php echo Filtration\Core\System::translate("Verify now!"); ?></span>
+                            </a>
+                        </li>
+                    <?php } ?>
+
+                    <?php if (Filtration\Model\UserModel::user()->user_role == 'admin'){ ?>
+                        <li class="has_sub">
+                            <a href="javascript:void(0);" class="waves-effect"><i class="fa fa-cog"></i><span> Admin</span></a>
+                            <ul class="list-unstyled">
+                                <li><a href="<?php echo SURL; ?>admin"> Admin</a></li>
+                                <li><a href="<?php echo SURL; ?>admin/users"> Users</a></li>
+                                <li><a href="<?php echo SURL; ?>admin/transactions"> Transactions</a></li>
+                                <li><a href="<?php echo SURL; ?>admin/coins"> Coins</a></li>
+                                <li><a href="<?php echo SURL; ?>admin/guides"> Guides</a></li>
+                                <li><a href="<?php echo SURL; ?>admin/coins"> Coins</a></li>
+                            </ul>
+                        </li>
+                    <?php } ?>
+
+
+                <?php }else{ ?>
+
+                    <li class="has_sub">
+                        <a href="javascript::void(0);" class="waves-effect">
+                            <i class="fa fa-user"></i> <span><?php echo Filtration\Core\System::translate("Guest"); ?></span>
+                        </a>
+                        <ul class="list-unstyled">
+                            <li>
+                                <a href="<?php echo SURL; ?>user/login">
+                                    <i class="fa fa-user"></i>
+                                    <?php echo Filtration\Core\System::translate("login"); ?>
+                                </a>
+                            </i>
+                            <li>
+                                <a href="<?php echo SURL; ?>user/register">
+                                    <i class="fa fa-user"></i>
+                                    <?php echo Filtration\Core\System::translate("Register"); ?>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                <?php } ?>
             </ul>
             <div class="clearfix"></div>
         </div>

@@ -1,9 +1,12 @@
 <?php
+namespace Filtration\Model;
 
+use Filtration\Core\DatabaseFactory;
+use Filtration\Core\Session;
 Class NotificationModel
 {
 
-    public static function messagecount() 
+    public static function notificationcount() 
 	{
 		//get the user
 		$user = UserModel::user();
@@ -12,20 +15,20 @@ Class NotificationModel
 		$database = DatabaseFactory::getFactory()->getConnection(); 
         
 		//sql to run
-		$sql = "SELECT message_message_read 
-				FROM messages 
-				WHERE message_message_read = 'unread' 
-				AND message_user = ?";
+		$sql = "SELECT notification_read 
+				FROM notifications
+				WHERE notification_read = 'unread' 
+				AND notification_user = ?";
         
 		//run the sql
-		$messages = $database->prepare($sql);
-        $messages->execute(array(Session::get('id')));
+		$notifications = $database->prepare($sql);
+        $notifications->execute(array(Session::get('user_id')));
         
         //return the results
-        $messagecount = $messages->fetchAll();
+        $notificationcount = $notifications->fetchAll();
     }
 	
-    public static function messages($type) 
+    public static function notifications($type) 
 	{
 		
 		//iniate the database
@@ -34,54 +37,47 @@ Class NotificationModel
 		if (!empty($type)) {
 			
 			//sql to run
-			$sql = "SELECT * FROM messages 
-					WHERE message_user = ? 
-					AND message_type = ? 
-					ORDER BY message_DATE DESC";
+			$sql = "SELECT * FROM notifications
+					WHERE notification_user = ? 
+					AND notification_type = ? 
+					ORDER BY notification_DATE DESC";
             
 			//run the sql
-			$messages = $database->prepare($sql);
-            $messages->execute(array(Session::get('id'), $type));
+			$notifications = $database->prepare($sql);
+            $notifications->execute(array(Session::get('user_id'), $type));
         } else {
 			
 			//sql to run
-			$sql_2 = "SELECT * FROM messages 
-					  WHERE message_user = ? 
-					  ORDER BY message_DATE DESC";
+			$sql_2 = "SELECT * FROM notifications 
+					  WHERE notification_user = ? 
+					  ORDER BY notification_DATE DESC";
             
 			//run the sql
-			$messages = $database->prepare($sql_2);
-            $messages->execute(array(Session::get('id')));
+			$notifications = $database->prepare($sql_2);
+            $notifications->execute(array(Session::get('user_id')));
         }
-        return $messages->fetchAll();
+        return $notifications->fetchAll();
     }
 
-    /**
-     * deletemessage()
-     * 
-     * @param mixed $username
-     * @param mixed $messageid
-     * @return
-     */
-    public static function delete_message($messageid) 
+    public static function delete_notification($notificationid) 
     {
         //iniate the database
         $database = DatabaseFactory::getFactory()->getConnection(); 
 
         //sql to run
-        $sql = "DELETE FROM messages 
-                WHERE message_user = ? 
-                AND message_id = ?";
+        $sql = "DELETE FROM notifications
+                WHERE notification_user = ? 
+                AND notifications_id = ?";
 
         //run the sql
-        $message = $database->prepare($sql);
-        $message->execute(array(Session::get('id'), $messageid));
+        $notification = $database->prepare($sql);
+        $notification->execute(array(Session::get('user_id'), $notificationid));
 
         //results?
-        if($message->rowCount()):
-            Alert::success('deleted_message', true);
+        if($notification->rowCount()):
+            Alert::success('deleted_notification', true);
         else:
-            Alert::error('deleted_message', true);
+            Alert::error('deleted_notification', true);
         endif; 
     }
 
@@ -92,40 +88,30 @@ Class NotificationModel
 		$database = DatabaseFactory::getFactory()->getConnection(); 
 		
 		//sql to run
-		$sql = "UPDATE messages 
-				SET message_message_read = 'read' 
-				WHERE message_id = ? 
-				AND message_user = ?";
+		$sql = "UPDATE notifications
+				SET notification_read = 'read' 
+				WHERE notification_id = ? 
+				AND notification_user = ?";
 		
 		//run the sql
         $markasread = $database->prepare($sql);
-        $markasread->execute(array($notification, Session::get('id')));
+        $markasread->execute(array($notification, Session::get('user_id')));
         
 	}
 
-    /**
-     * addmessage()
-     * 
-     * @param mixed $title
-     * @param mixed $usermessage
-     * @param mixed $user
-     * @param mixed $userfrom
-     * @param mixed $type
-     * @return
-     */
-    public static function addmessage($title, $usermessage, $user, $userfrom, $type) 
+    public static function addnotification($title, $usernotification, $user, $userfrom, $type) 
     {
 		//iniate the database
         $database = DatabaseFactory::getFactory()->getConnection();
 
         //sql to run
-        $sql = "INSERT INTO messages
+        $sql = "INSERT INTO notifications
         		(
-        			message_title,
-        			message_message,
-        			message_user,
-        			message_whofrom,
-        			message_type
+        			notification_title,
+        			notification_message,
+        			notification_user,
+        			notification_whofrom,
+        			notification_type
         		) 
         		VALUES
         		(
@@ -137,32 +123,25 @@ Class NotificationModel
         		)";
 
         //run the sql
-        $message = $database->prepare($sql);
-        $message->execute(array($title, $usermessage, $user, $userfrom, $type));
+        $notification = $database->prepare($sql);
+        $notification->execute(array($title, $usernotification, $user, $userfrom, $type));
     }
 
-    /**
-     * message()
-     * 
-     * @param mixed $username
-     * @param mixed $messageid
-     * @return
-     */
-    public static function message($messageid) 
+    public static function notification($notificationid) 
     {
 		//iniate the database
         $database = DatabaseFactory::getFactory()->getConnection();
 
     	//sql to run
-    	$sql = "SELECT * FROM messages 
-    			WHERE message_user = ? 
-    			AND message_id = ?";
+    	$sql = "SELECT * FROM notifications 
+    			WHERE notification_user = ? 
+    			AND notification_id = ?";
 
     	//run the sql
-        $message = $database->prepare($sql);
-        $message->execute(array(Session::get('id'), $messageid));
+        $notification = $database->prepare($sql);
+        $notification->execute(array(Session::get('user_id'), $notificationid));
         
         //return the results
-        return $message->fetch();
+        return $notification->fetch();
     }
 }

@@ -13,8 +13,8 @@
         <?php foreach ($this->guides as $guide) { ?>							
             <li class="list-group-item">
                 <span class="badge badge-roundless badge-primary"></span>
-                <a href="<?php echo SITE_URL.'help/guide/'.System::escape($guide->userguide_url); ?>" class="guideurl">
-					<?php echo System::escape($guide->userguide_title); ?>
+                <a href="<?php echo SURL; ?>help/guide/<?php echo Filtration\Core\System::escape($guide->guide_id); ?>" class="guideurl">
+					<?php echo Filtration\Core\System::escape($guide->guide_title); ?>
             </li>
         <?php } ?>
     </ul>
@@ -25,13 +25,19 @@ $(document).ready(function ()
 {
     $(".guideurl").on("click", function () 
     {
+        
         $.ajax({
             type: 'GET',
-            URL: $(this).attr('href'),
-            success: function (msg) 
+            url: $(this).attr('href'),
+            success: function (data)
             {
-                $('#panel-body').html(msg);
+                $('#panel-body').html(data);
+
+            }, error: function()
+            {
+
             }
+            
         });
         return false;
     });

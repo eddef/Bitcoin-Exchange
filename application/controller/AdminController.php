@@ -1,6 +1,9 @@
 <?php
 namespace Filtration\Controller;
 
+use Filtration\Model\AdminModel;
+use Filtration\Model\SupportModel;
+
 class AdminController extends \Filtration\Core\Controller {
 
     public function index() 
@@ -18,7 +21,7 @@ class AdminController extends \Filtration\Core\Controller {
         $totalnmc = AdminModel::admintotaltrades('nmc');
 
 		//render the pages
-		$this->View->RenderPage_admin
+		$this->View->Render
 		(
 			'admin/index', 
 			[
@@ -40,7 +43,7 @@ class AdminController extends \Filtration\Core\Controller {
 		//get all the users
         $users = AdminModel::adminusers();
 		
-		$this->View->RenderPage_admin('admin/users', ['users' => $users]);
+		$this->View->Render('admin/users', ['users' => $users]);
     }
 
     public function transactions() 
@@ -51,7 +54,7 @@ class AdminController extends \Filtration\Core\Controller {
 		//get all the transactions
         $transactions = AdminModel::transactions();
 		
-		$this->View->RenderPage_admin('admin/transactions', ['transactions' => $transactions]);
+		$this->View->Render('admin/transactions', ['transactions' => $transactions]);
     }
 
     public function coins() 
@@ -62,7 +65,7 @@ class AdminController extends \Filtration\Core\Controller {
 		//get the coins
         $coin = AdminModel::coinlinks();
 		
-		$this->View->RenderPage_admin('admin/coins', ['coin' => $coin]);
+		$this->View->Render('admin/coins', ['coin' => $coin]);
 
     }
 
@@ -71,7 +74,7 @@ class AdminController extends \Filtration\Core\Controller {
 		//make sure they're an admin
 		AdminModel::auth();
 		
-		$this->View->RenderPage_admin('admin/addcoin');
+		$this->View->Render('admin/addcoin');
     }
 	
 	public function addcoin_action()
@@ -91,15 +94,7 @@ class AdminController extends \Filtration\Core\Controller {
 		//get the coins info
         $coin = AdminModel::editcoin($id);
 		
-		$this->View->RenderPage_admin('admin/editcoin', ['coin' => $coin]);
-    }
-
-    public function addguide() 
-	{
-		//make sure they're an admin
-		AdminModel::auth();
-		
-        $this->View->RenderPage_admin('admin/addguide');
+		$this->View->Render('admin/editcoin', ['coin' => $coin]);
     }
 
     public function settings() 
@@ -107,32 +102,13 @@ class AdminController extends \Filtration\Core\Controller {
 		//make sure they're an admin
 		AdminModel::auth();
 		
-		$this->View->RenderPage_admin('admin/settings');
+		$this->View->Render('admin/settings');
     }
 
     public function updatesettings() 
 	{
 		//make sure they're an admin
 		AdminModel::auth();
-    }
-
-    public function editguide($SITE_URL = null) 
-	{
-		//make sure they're an admin
-		AdminModel::auth();
-		
-		//get the guides info
-        $editguide = SupportModel::viewguide($SITE_URL);
-        
-		$this->View->RenderPage_admin('admin/editguide');
-    }
-
-    public function updateguide() 
-	{
-		//make sure they're an admin
-		AdminModel::auth();
-		
-		AdminModel::updateguide();
     }
 
     public function guides() 
@@ -143,7 +119,34 @@ class AdminController extends \Filtration\Core\Controller {
         //get the guides
         $guides = SupportModel::helpguides();
         
-		$this->View->RenderPage_admin('admin/guides');
+		$this->View->Render('admin/guides', ['guides' => $guides]);
+    }
+
+    public function addguide() 
+	{
+		//make sure they're an admin
+		AdminModel::auth();
+		
+        $this->View->Render('admin/addguide');
+    }
+
+    public function editguide($SITE_URL = null) 
+	{
+		//make sure they're an admin
+		AdminModel::auth();
+		
+		//get the guides info
+        $editguide = SupportModel::viewguide($SITE_URL);
+        
+		$this->View->Render('admin/editguide');
+    }
+
+    public function updateguide() 
+	{
+		//make sure they're an admin
+		AdminModel::auth();
+		
+		AdminModel::updateguide();
     }
 
     public function insertguide() 
@@ -163,7 +166,7 @@ class AdminController extends \Filtration\Core\Controller {
 		//get unverified users
 		$users = AdminModel::useridverify();
 		
-		$this->View->RenderPage_admin('admin/verifyusers', array('users' => $users));
+		$this->View->Render('admin/verifyusers', array('users' => $users));
     }
 
     public function edituser($user = null) 
@@ -174,7 +177,7 @@ class AdminController extends \Filtration\Core\Controller {
 	    //get the user's information
         $edituser = AdminModel::edituser($user);
 
-		$this->View->RenderPage_admin('admin/edituser', array('edituser' => $edituser));
+		$this->View->Render('admin/edituser', array('edituser' => $edituser));
     }
 
     public function addfaq() 
@@ -182,7 +185,7 @@ class AdminController extends \Filtration\Core\Controller {
 		//make sure they're an admin
 		AdminModel::auth();
 		
-		$this->View->RenderPage_admin('admin/addfaq');
+		$this->View->Render('admin/addfaq');
     }
 
     public function faqs() 
@@ -193,7 +196,7 @@ class AdminController extends \Filtration\Core\Controller {
         //get all the faqs
         $faqs = Support::faqs();
         
-		$this->View->RenderPage_admin('admin/faqs');
+		$this->View->Render('admin/faqs');
     }
 
     public function insertfaq() 
@@ -212,7 +215,7 @@ class AdminController extends \Filtration\Core\Controller {
 		//get the faq
         $editfaq = AdminModel::editfaq($id);
         
-		$this->View->RenderPage_admin('admin/editfaq');
+		$this->View->Render('admin/editfaq');
     }
 
     public function deletefaq($faq = null) 
@@ -237,7 +240,7 @@ class AdminController extends \Filtration\Core\Controller {
 		//make sure they're an admin
 		AdminModel::auth();		
 
-        $this->View->RenderPage_admin('admin/addpage');
+        $this->View->Render('admin/addpage');
     }
 
 
@@ -249,7 +252,7 @@ class AdminController extends \Filtration\Core\Controller {
 		//get the banned users
         $bannedusers = AdminModel::bannedusers();
         
-		$this->View->RenderPage_admin('admin/bannedusers', array('bannedusers' => $bannedusers));
+		$this->View->Render('admin/bannedusers', array('bannedusers' => $bannedusers));
     }
 
 
@@ -259,7 +262,7 @@ class AdminController extends \Filtration\Core\Controller {
 		//make sure they're an admin
 		AdminModel::auth();
 		
-		$this->View->RenderPage_admin('admin/addnews');
+		$this->View->Render('admin/addnews');
     }
 
 
@@ -271,7 +274,7 @@ class AdminController extends \Filtration\Core\Controller {
         //get all the news articles
 		$news = AdminModel::news();
  
-		$this->View->RenderPage_admin('admin/news', array('news' => $news));
+		$this->View->Render('admin/news', array('news' => $news));
     }
 
 	public function editpage($id = null) 
@@ -282,7 +285,7 @@ class AdminController extends \Filtration\Core\Controller {
 		//get the page's info
         $editpage = AdmimModel::editpage($id);
         
-		$this->View->RenderPage_admin('admin/editpage', array('editpage' => $editpage));
+		$this->View->Render('admin/editpage', array('editpage' => $editpage));
     }
 	
     public function editnews($id = null) 
@@ -293,7 +296,7 @@ class AdminController extends \Filtration\Core\Controller {
         //get the news article
         $editnews = AdminModel::editnews($id);
         
-		$this->View->RenderPage_admin('admin/editnews', array('editnews' => $editnews));
+		$this->View->Render('admin/editnews', array('editnews' => $editnews));
     }
 	
     public function pages() 
@@ -304,7 +307,7 @@ class AdminController extends \Filtration\Core\Controller {
 		//get the pages
         $pages = AdminModel::pages();
         
-		$this->View->RenderPage_admin('admin/pages', array('pages' => $pages));
+		$this->View->Render('admin/pages', array('pages' => $pages));
     }
 	
     public function modcp() 

@@ -10,7 +10,7 @@
                 <ul id="main-menu" class="main-menu">
                     <!-- add class "multiple-expanded" to allow multiple submenus to open -->
                     <!-- class "auto-inherit-active-class" will automatically add "active" class for parent elements who are marked already with class "active" -->
-                    <?php if (Session::get('id') == true): ?>
+                    <?php if (Session::get('user_id') == true): ?>
                         <li>
                             <a href="<?php echo SITE_URL; ?>">
                                 <i class="fa fa-lg fa-fw fa-dashboard"></i> 

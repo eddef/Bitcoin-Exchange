@@ -36,7 +36,7 @@ Class TradesModel
 		
 		//run the sql
         $getorder = $database->prepare($sql);
-        $getorder->execute(array(Session::get('id'), $type));
+        $getorder->execute(array(Session::get('user_id'), $type));
         
 		//return the query
 		return $getorder->fetchAll();
@@ -53,7 +53,7 @@ Class TradesModel
 				
 		//run the sql
         $getorder = $database->prepare($sql);
-        $getorder->execute(array(Session::get('id')));
+        $getorder->execute(array(Session::get('user_id')));
         
 		//return the results
 		return $getorder->fetchAll();
@@ -104,7 +104,7 @@ Class TradesModel
         		$coin, 
         		$totalprice, 
         		date("y-m-d h:i:s"),
-            	Session::get('id'), 
+            	Session::get('user_id'), 
             	$userip, 
             	$coinvalue, 
             	$order, 

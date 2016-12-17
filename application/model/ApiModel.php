@@ -81,7 +81,7 @@ Class ApiModel
 		
 		//run the sql
         $getapi = $database->prepare($sql);
-        $getapi->execute(array(Session::get('id')));
+        $getapi->execute(array(Session::get('user_id')));
         
 		//return the results
 		return $getapi->fetchAll();
@@ -99,7 +99,7 @@ Class ApiModel
 		
 		//run the sql
         $deleteapi = $database->prepare($sql);
-        $deleteapi->execute(array($api, Session::get('id')));
+        $deleteapi->execute(array($api, Session::get('user_id')));
 
         // did it successfully delete?
         if($deleteapi)
@@ -139,7 +139,7 @@ Class ApiModel
 				
 		// run the sql
         $insertapi = $database->prepare($sql);
-        $insertapi->execute(array(Request::post('name'), $key, $secrect, Session::get('id')));
+        $insertapi->execute(array(Request::post('name'), $key, $secrect, Session::get('user_id')));
 		
 		// the results?
 		if($insertapi->rowCount()):

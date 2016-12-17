@@ -72,7 +72,7 @@ class DashboardController extends \Filtration\Core\Controller {
         //get the session user
         $user = UserModel::user();
 		
-        $this->View->RenderPage_sidebar('verify/verify');
+        $this->View->Render('verify/verify');
     }
 
     public function orders() 

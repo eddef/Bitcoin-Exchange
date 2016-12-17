@@ -1,14 +1,17 @@
 <?php
+namespace Filtration\Controller;
 
-class HelpController extends Controller 
+use Filtration\Model\SupportModel;
+
+class HelpController extends \Filtration\Core\Controller 
 {
 
     public function index() 
 	{
 		//get the site's guides
         $guides = SupportModel::helpguides();
-		
-		$this->View->RenderPage_sidebar('help/guide', array('guides' => $guides));
+
+		$this->View->Render('help/guide', array('guides' => $guides));
     }
 
     public function faq() 
@@ -16,25 +19,28 @@ class HelpController extends Controller
 		//get the site's faqs
 		$faqs = SupportModel::faqs();
 		
-		$this->View->RenderPage_sidebar('help/faq', array('faqs' => $faqs));
+		$this->View->Render('help/faq', array('faqs' => $faqs));
     }
 
     public function tickets() 
 	{
-		$this->View-->RenderPage_sidebar('home/tickets');
+		$this->View-->Render('home/tickets');
     }
 
     public function tos() 
 	{
-		$this->View->RenderPage_sidebar('help/tos');
+		$this->View->Render('help/tos');
     }
 
-    public function guide() 
+    public function guide($id = null) 
 	{
         //get the guides
-		$guides = SupportModel::helpguides();
+		$guide = SupportModel::viewguide($id);
 		
-		$this->View->RenderPage_sidebar('help/guide');
+        // make sure a guide exisrs
+        if(!empty($guide)){
+		  $this->View->RenderMulti(['help/viewguides'], ['guide' => $guide]);
+        }
         
     }
 
@@ -53,7 +59,7 @@ class HelpController extends Controller
 
     public function contact() 
 	{
-        $this->View->RenderPage_sidebar('help/contact');
+        $this->View->Render('help/contact');
     }
 
 }

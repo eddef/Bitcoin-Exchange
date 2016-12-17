@@ -50,7 +50,7 @@ Class SecurityModel
 		
 		//run the sql
         $updateips = $database->prepare($sql);
-        $updateips->execute(array($ips, Session::get('id')));
+        $updateips->execute(array($ips, Session::get('user_id')));
 		
 		//the results?
 		if($updateips->rowCount()):
@@ -58,7 +58,7 @@ Class SecurityModel
 			//send them an account message
 			NotificationModel::addmessage("You have added a whitelist IP", "You have recently added a whitelist IP from our system. You will no longer be
 				able to login with another IP unless you add them too. The IP that was deleted 
-				is: " . $ips . "", Session::get('id'), "System", "account");
+				is: " . $ips . "", Session::get('user_id'), "System", "account");
 				
 			Session::set('success', 'update_whitelist');
 			Redirect::to('security/security');
@@ -83,7 +83,7 @@ Class SecurityModel
 		
 		//run the sql
         $updateips = $database->prepare($sql);
-        $updateips->execute(array($newwhitelist, Session::get('id')));
+        $updateips->execute(array($newwhitelist, Session::get('user_id')));
 		
 		//the results?
 		if($updateips->rowCount())
@@ -135,7 +135,7 @@ Class SecurityModel
 	                    	"You have completed 2factor Authentication", 
 	                    	"You have added Two Factor Authentication to your account. This will
 							 make your account much more secure. If you did not do this please contact
-							 support as soon as possible", Session::get('id'), "System", "account"
+							 support as soon as possible", Session::get('user_id'), "System", "account"
 						);
 
 						Alert::success('adding_2factor', true);
@@ -173,7 +173,7 @@ Class SecurityModel
 
             //run the sql
             $insertkey = $database->prepare($sql);
-            $insertkey->execute(array($secret, Session::Get('id')));
+            $insertkey->execute(array($secret, Session::get('user_id')));
             
             //return the generated key
             return $secret;

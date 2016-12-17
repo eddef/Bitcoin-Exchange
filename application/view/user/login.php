@@ -20,7 +20,7 @@
 
         <div class="form-group">
             <div class="col-xs-12">
-                <input class="form-control" type="password" name="password" required="" placeholder="<?php echo Filtration\Core\System::translate("Password"); ?>">
+                <input class="form-control" type="password" name="pass" required="" placeholder="<?php echo Filtration\Core\System::translate("Password"); ?>">
                 <div id="capslock" style="visibility:hidden">
                     <font color="red">
                         <br><?php echo Filtration\Core\System::translate("Your caps lock is enabled. Our passwords are case-sensitive."); ?>

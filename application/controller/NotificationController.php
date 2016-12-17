@@ -1,6 +1,10 @@
 <?php
+namespace Filtration\Controller;
 
-Class NotificationController extends Controller
+use Filtration\Model\UserModel;
+use Filtration\Model\NotificationModel;
+
+Class NotificationController extends \Filtration\Core\Controller
 {
 	public function view($notification) 
 	{
@@ -10,31 +14,31 @@ Class NotificationController extends Controller
         //get the session user
         $user = UserModel::user();
 
-		//get the message
+		//get the notification
 		NotificationModel::read_notification($notification);
 		
-        $message = NotificationModel::message($notification);
+        $notification = NotificationModel::notification($notification);
         
-    $this->View->RenderPage_sidebar('messages/view', array('message' => $message));
+    $this->View->Render('notification/view', array('notification' => $notification));
     }
 
 
-    public function messages($type = null) 
+    public function notifications($type = null) 
 	{ 
 		//make sure they're logged in
 		UserModel::authentication();
 		
 		//get notifications
-        $messages = NotificationModel::messages($type);
+        $notifications = NotificationModel::notifications($type);
 		
-		$this->View->RenderPage_sidebar('messages/messages', array('messages' => $messages));
+		$this->View->Render('notifications/notifications', array('notifications' => $notifications));
     }
 
-    public function delete_message($message = null) 
+    public function delete_notification($notification = null) 
 	{
 		//make sure they're logged in
 		UserModel::authentication();
 
-        $message = NotificationModel::delete_message($message);
+        $notification = NotificationModel::delete_notification($notification);
     }
 }

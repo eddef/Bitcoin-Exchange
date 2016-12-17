@@ -52,7 +52,7 @@ class Alert
 		
         $success = array
         (
-			'logged_in' => 'You have successfully logged in',
+			'success_logging_in' => 'You have successfully logged in',
 			'registered' => 'You have registered',
 			'generate_api' => 'You have generated an API',
 			'delete_api' => 'You have deleted this API'

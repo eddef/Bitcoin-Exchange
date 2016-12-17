@@ -93,12 +93,12 @@ Class VerificationModel
         $j = 0; 
         
 		//if folder doesn't exist create it
-		if (!file_exists(SITE_URL_PUB . "/userverify/" . Session::get('id') . "/")) {
-            mkdir(SITE_URL_PUB . "/userverify/" . Session::get('id'). "/", 0777);
+		if (!file_exists(SITE_URL_PUB . "/userverify/" . Session::get('user_id') . "/")) {
+            mkdir(SITE_URL_PUB . "/userverify/" . Session::get('user_id'). "/", 0777);
         }
        
 	    // Declaring Path for uploaded images.
-	    $target_path = SITE_URL_PUB . "/userverify/" . Session::get('id') . "/"; 
+	    $target_path = SITE_URL_PUB . "/userverify/" . Session::get('user_id') . "/"; 
         
 		for ($i = 0; $i < count($_FILES['file']['name']); $i++)
 		{
@@ -133,16 +133,16 @@ Class VerificationModel
                         
 						//run the sql
 						$insert = $database->prepare("UPDATE user SET user_verifyimg = ? WHERE user_id = ?");
-						$insert->execute(array($allimgs, Session::get('id')));
+						$insert->execute(array($allimgs, Session::get('user_id')));
                         
 						//update their information
 						$this->model->userverifydetails(Request::post('firstname'), Request::post('lastname'), Request::post('address1'), 
 														Request::post('address2'), Request::post('city'), Request::post('zip'),
 														Request::post('state'), Request::post('country'), Request::post('dob'),
-														Session::get('id'));
+														Session::get('user_id'));
                         
                         NotificationsModel::addmessage("You have submitted verification details", "You have recently submitted information for our user 
-													verification. Our team will verify this <b><u>as soon as possible</u></b>", Session::get('id'), "System", "account");
+													verification. Our team will verify this <b><u>as soon as possible</u></b>", Session::get('user_id'), "System", "account");
                         
 						//success message here
                         

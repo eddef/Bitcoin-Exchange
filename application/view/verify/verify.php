@@ -25,17 +25,18 @@
         border: 1px solid #e8debd
     }
 </style>
-<div class="container panel panel-default panel-body col-xs-12 col-md-7">
+<div class="container">
     <div class="panel-heading">
         <h3 class="panel-title">
             <?php echo Filtration\Core\System::translate("User Verification form"); ?>
         </h3>
     </div>
-    <div class="panel-body col-xs-12 col-md-12">
+
+    <div class="panel panel-default panel-body col-xs-12 col-md-12 col-lg-7">
 
         <div class="row">
 
-            <div class="alert alert-default">
+            <div class="alert alert-info" style="margin:10px">
                 <button class="close" data-dismiss="alert" type="button"><span>×</span> <span class="sr-only">Close</span>
                 </button>
                 <?php echo Filtration\Core\System::translate("Upload a valid form of identification. Driving licenses, passports, Government Issued ID's"); ?>
@@ -46,80 +47,42 @@
                     <form action="<?php echo SITE_URL; ?>user/veridetails" class="validate" method="post" novalidate="novalidate" enctype="multipart/form-data">
                         <div class="row col-margin">
                             <div class="col-xs-12 col-sm-6">
-                                <div class="input-group">
-                                    <div class="input-group-addon linecons-user" style="font-style: italic">
-                                    </div>
-                                    <input class="form-control" data-message-required="Please enter your First Name" data-validate="required" name="firstname" placeholder="<?php echo Filtration\Core\System::translate(" First Name "); ?>" type="text">
-                                </div>
-                            </div>
-                            <div class="col-xs-12 col-sm-6">
-                                <div class="input-group">
-                                    <div class="input-group-addon linecons-user" style="font-style: italic">
-                                    </div>
-                                    <input class="form-control" data-message-required="Please enter your Last Name" data-validate="required" name="lastname" placeholder="<?php echo Filtration\Core\System::translate(" Last Name "); ?>" type="text">
+                                <div class="form-group">
+                                    <input class="form-control" data-message-required="Please enter your First Name" data-validate="required" name="firstname" placeholder="<?php echo Filtration\Core\System::translate("First Name"); ?>" type="text">
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-addon linecons-shop" style="font-style: italic">
-                                        </div>
-                                        <input class="form-control" data-validate="required" id="address" name="address" placeholder="<?php echo Filtration\Core\System::translate(" Address line 1 "); ?>" type="text">
-                                    </div>
+                                    <input class="form-control" data-message-required="Please enter your Last Name" data-validate="required" name="lastname" placeholder="<?php echo Filtration\Core\System::translate("Last Name"); ?>" type="text">
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-addon linecons-shop" style="font-style: italic">
-                                        </div>
-                                        <input class="form-control" data-validate="required" id="address" name="address2" placeholder="<?php echo Filtration\Core\System::translate(" Address line 2 "); ?>" type="text">
-                                    </div>
+                                    <input class="form-control" data-validate="required" id="address" name="address" placeholder="<?php echo Filtration\Core\System::translate("Address line 1"); ?>" type="text">
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-addon linecons-shop" style="font-style: italic">
-                                        </div>
-                                        <input class="form-control" data-validate="required" id="address" name="city" placeholder="<?php echo Filtration\Core\System::translate(" City "); ?>" type="text">
-                                    </div>
+                                    <input class="form-control" data-validate="required" id="address" name="address2" placeholder="<?php echo Filtration\Core\System::translate("Address line 2"); ?>" type="text">
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-addon linecons-lock" style="font-style: italic">
-                                        </div>
-                                        <input class="form-control" data-validate="required" id="address" name="zipcode" placeholder="<?php echo Filtration\Core\System::translate(" Postal Code "); ?>" type="text">
-                                    </div>
+                                    <input class="form-control" data-validate="required" id="address" name="city" placeholder="<?php echo Filtration\Core\System::translate("City"); ?>" type="text">
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-addon linecons-lock" style="font-style: italic">
-                                        </div>
-                                        <input class="form-control" data-validate="required" id="address" name="state" placeholder="<?php echo Filtration\Core\System::translate(" State/Provinince "); ?>" type="text">
-                                    </div>
+                                    <input class="form-control" data-validate="required" id="address" name="zipcode" placeholder="<?php echo Filtration\Core\System::translate("Postal Code"); ?>" type="text">
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-6">
-
                                 <div class="form-group">
-                                    <script type="text/javascript">
-                                        jQuery(document).ready(function ($)
-                                        {
-                                            $("#sboxit-2").selectBoxIt({
-                                                showFirstOption: false
-                                            }).on('open', function ()
-                                            {
-                                                // Adding Custom Scrollbar
-                                                $(this).data('selectBoxSelectBoxIt').list.perfectScrollbar();
-                                            });
-                                        });
-                                    </script>
-
+                                    <input class="form-control" data-validate="required" id="address" name="state" placeholder="<?php echo Filtration\Core\System::translate("State/Provinince"); ?>" type="text">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                <div class="form-group">
                                     <select class="form-control" data-validate="required" name="country" id="sboxit-2">
                                         <option>Select your country</option>
                                         <option value="Afghanistan">Afghanistan</option> 
@@ -132,16 +95,12 @@
 
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group">
-                                    <div class="input-group">
-                                        <div class="input-group-addon">
-                                            <a href="#"><i class="linecons-calendar"></i></a>
-                                        </div>
-                                        <input type="text" data-validate="required" placeholder="<?php echo Filtration\Core\System::translate("Date of birth"); ?>" class="form-control datepicker" data-format="D, dd MM yyyy">
-                                    </div>
+                                    <input type="text" data-validate="required" placeholder="<?php echo Filtration\Core\System::translate("Date of birth"); ?>" class="form-control datepicker" data-format="D, dd MM yyyy">
                                 </div>
                             </div>
                         </div>
-                </div>
+                    </div>
+                </form>
                 <div class="panel-body">
                     <div id="filediv">
                         <input name="file[]" type="file" id="file" />
@@ -153,9 +112,9 @@
             </div>
         </div>
     </div>
-</div>
+
 <div class="col-sm-12 col-md-12 col-lg-5"> 
-    <div class="well well-small">
+    <div class="well  ">
         <p class="lead"><?php echo Filtration\Core\System::translate("How to verify"); ?></p>
         <ul class="media-list">
             <li class="media">
@@ -198,7 +157,4 @@
             </li>
         </ul>
     </div>
-</div>
-</div>
-</div>
 </div>

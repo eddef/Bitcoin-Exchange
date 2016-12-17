@@ -16,7 +16,7 @@ Class TransferModel
 
 		//run the sql
         $transaction = $database->prepare($sql);
-        $transaction->execute(array(Session::get('id'), $market, $type));
+        $transaction->execute(array(Session::get('user_id'), $market, $type));
         
         //return the results
         return $transaction->fetchAll();
@@ -35,7 +35,7 @@ Class TransferModel
 
     	//run the sql
         $address = $database->prepare($sql);
-        $address->execute(array(Session::get('id'), $coin));
+        $address->execute(array(Session::get('user_id'), $coin));
         
         //return the results
         return $address->fetchAll();

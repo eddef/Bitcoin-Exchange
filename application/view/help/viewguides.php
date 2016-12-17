@@ -1,4 +1,3 @@
 <?php
-
-echo $viewguide->message;
+echo Filtration\Core\System::escape($this->guide->guide_message);
 ?>

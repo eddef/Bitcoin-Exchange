@@ -37,13 +37,13 @@ Class WalletModel
 		//if they want to generate a new address
         if ($generate == 'generate')
         {
-            $addwallet->execute(array($wallet, $startcoin, Session::get('id')));
+            $addwallet->execute(array($wallet, $startcoin, Session::get('user_id')));
             return $wallet;
         }
         else
         {
         	if(!$wallets):
-        	   $addwallet->execute(array($wallet, $startcoin, Session::get('id')));
+        	   $addwallet->execute(array($wallet, $startcoin, Session::get('user_id')));
         	   return $wallet;
         	else:
         		return $wallets;
@@ -66,7 +66,7 @@ Class WalletModel
 
     	//run the sql
     	$wallet = $database->prepare($sql);
-    	$wallet->execute(array(Session::get('id'), $coin));
+    	$wallet->execute(array(Session::get('user_id'), $coin));
 
     	//return the results
     	return $wallet->fetch();

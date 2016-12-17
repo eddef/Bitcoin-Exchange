@@ -5,13 +5,27 @@ use Filtration\Core\DatabaseFactory;
 use Filtration\Core\Session;
 use Filtration\Core\Request;
 use Filtration\Core\Alert;
+use Filtration\Core\Redirect;
 
 Class UserModel
 {
 	public static function logged_in()
     {
         // check if they're logged in
-		return (Session::get('id') ? true : false);
+		return (Session::get('user_id') ? true : false);
+    }
+
+    public static function logout()
+    {
+    	// destroy the session
+        Session::destroy();
+
+        //PUT THAT COOKIE DOWN, NOW! (Arnie reference)
+        if (isset($_COOKIE['XE_RememberMe'])) {
+            unset($_COOKIE['XE_RememberMe']);
+            setcookie('XE_RememberMe', null, -1, '/');
+        }
+
     }
 	
 	public static function authentication() 
@@ -40,7 +54,7 @@ Class UserModel
 		
 		// run the sql
         $user = $database->prepare($sql);
-        $user->execute(array(Session::get('id')));
+        $user->execute(array(Session::get('user_id')));
         
 		// return the results
 		return $user->fetch();
@@ -54,26 +68,26 @@ Class UserModel
         endif;
     }
 	
-    public static function isstaff() 
-	{
+ //    public static function isstaff() 
+	// {
 		
-		// iniate the database
-		$database = DatabaseFactory::getFactory()->getConnection();		
+	// 	// iniate the database
+	// 	$database = DatabaseFactory::getFactory()->getConnection();		
 		
-		// sql to run
-		$sql = "SELECT user_role FROM users 
-				WHERE user_id = ?";
+	// 	// sql to run
+	// 	$sql = "SELECT user_role FROM users 
+	// 			WHERE user_id = ?";
 		
 		
-		// run the sql
-        $admin = $database->prepare($sql);
-        $admin->execute(array(Session::get('id')));
-		$checkadmin = $admin->fetch();
+	// 	// run the sql
+ //        $admin = $database->prepare($sql);
+ //        $admin->execute(array(Session::get('user_id')));
+	// 	$checkadmin = $admin->fetch();
 		
-        if ($checkadmin->user_role == 'admin'):
-            return true;
-        endif;
-    }
+ //        if ($checkadmin->user_role == 'admin'):
+ //            return true;
+ //        endif;
+ //    }
 	
 	public static function log_login($email, $type = null)
 	{
@@ -111,7 +125,7 @@ Class UserModel
         $dateto = date("y-m-d h:i:s", strtotime("-15 minutes"));
                 
 		// sql to run
-		$sql = "SELECT * FROM logins 
+		$sql = "SELECT count(*) as attempts FROM logins 
 			   	WHERE login_ip = ? 
 			   		AND login_status = 'Unsuccessful login' 
 			   		AND login_date BETWEEN ? AND ? 
@@ -122,9 +136,9 @@ Class UserModel
         $checkbrute->execute(array($_SERVER["REMOTE_ADDR"], $dateto, $date));
         
 		// get the results
-		$checkbrutetimes = $checkbrute->fetchAll();
-         
-		if($checkbrutetimes > 5):
+		$checkbrutetimes = $checkbrute->fetch();
+
+		if($checkbrutetimes->attempts > 5):
 			Alert::error('login_disabled_brute_force', true);
 		endif;
 	}
@@ -156,7 +170,6 @@ Class UserModel
 			if($user_information->user_enabled != 'enabled' && $user_information->user_banned == 'banned'):
 				exit(json_encode(array("success" => false, "error" => $user_information->user_ban_info)));
 			elseif($user_information->user_enabled != 'enabled'):
-				exit(json_encode(array("success" => false, "error" => 'Your account is disabled')));
 			endif;
 			
 			// brute force attack
@@ -177,12 +190,12 @@ Class UserModel
 				
                     // success create sessions
                     Session::set('logged_in', 'true');
-                    Session::set('id', $user_information->user_id);
+                    Session::set('user_id', $user_information->user_id);
 					Session::set('email', Request::post('mail'));
 					// UserModel::newtoken();
                     
 					// notify them of their login
-					if ($user_information->user_login_notify == 'enabled'):
+					if ($user_information->user_loginnotify == 'enabled'):
                         // if they have a login notification
                         Mail::sendemail($user_information->user_email, 'Login notification', '
 							You have just logged in with an IP address of: ' . $_SERVER['SERVER_ADDR'] . '. If this is not you, 
@@ -190,7 +203,8 @@ Class UserModel
                     endif;
 					
                     // make sure the session has been set in the odd chance it's not
-                    if(Session::get('id') == true):
+                    if(Session::get('user_id') == true):
+                    	SELF::log_login(Request::post('mail'), 'success');
                         Alert::success('success_logging_in', true); // success message
                     else:
                         Alert::error("unknown_error", true);
@@ -199,8 +213,8 @@ Class UserModel
                 else
                 {
 					// UserModel::bruteforce('set');
+				 	SELF::log_login(Request::post('mail'), 'failed'); // brute force
                     Alert::error('wrong_email_or_password', true); // cannot login error
-					SELF::log_login(Request::post('mail'), 'failed'); // brute force
                     return false; // for our controller
                 }
             }
@@ -222,9 +236,6 @@ Class UserModel
 	
  	public static function register()
     {
-        // start session
-		Session::init();
-
 		// check if passwords match
 		if(Request::post('password') != Request::post('password2')): 				
 			// return the error
@@ -351,13 +362,13 @@ Class UserModel
 	            $voicetrading,
 	            $emailonwithdraw,
 	            $loginnotify,
-	            Session::get('id')
+	            Session::get('user_id')
 	        )
 	    );
 
         // add message
         NotificationModel::addmessage("You have updated your account information", "You have recently updated your account information. If you did
-			not make these changes please contact support <b><u>as soon as possible</u></b>", Session::get('id'), "System", "account");
+			not make these changes please contact support <b><u>as soon as possible</u></b>", Session::get('user_id'), "System", "account");
         
         // results?
         if($update->rowCount()):

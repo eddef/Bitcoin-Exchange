@@ -265,7 +265,7 @@ Class PaymentModel
                     UserModel::update_balance($database, $buyersbalance, $buyersmoney, $checksell->order_user);
 
                     //update session users balance
-                    UserModel::update_balance($database, $sellersnewbalance, $newbalance, Session::get('id'));
+                    UserModel::update_balance($database, $sellersnewbalance, $newbalance, Session::get('user_id'));
 
                     //add notification for buyer
                     TradesModel::add_transaction($database, $totalwithfee, $coin, $totalprice, $userip, $coinvalue, $order, $currencynotifi, $user);
@@ -285,7 +285,7 @@ Class PaymentModel
                     UserModel::update_balance($buyersbalance, $buyersmoney, $checksell->order_user);
 
                     //update session users balance
-                    UserModel::update_balance($sellersnewbalance, $newbalance, Session::get('id'));
+                    UserModel::update_balance($sellersnewbalance, $newbalance, Session::get('user_id'));
 
                     //add notification for buyer
                     TradesModel::add_transaction($totalwithfee, $coin, $totalprice, $userip, $coinvalue, $order, $currencynotifi, $user);

@@ -17,7 +17,7 @@ Class ActivityModel
 				
 		//run the sql
         $query = $database->prepare($sql);
-        $query->execute(array(Session::get('id')));
+        $query->execute(array(Session::get('user_id')));
 		
 		//return the results
         return $query->fetchAll();

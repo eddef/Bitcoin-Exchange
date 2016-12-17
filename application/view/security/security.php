@@ -5,39 +5,41 @@
     <div class="panel-heading">
         <h3 class="panel-title"><?php echo Filtration\Core\System::translate("User Logins"); ?></h3>
     </div>
-    <div class="table-responsive">
-        <?php if($this->userlogins): ?>
-			<table class="table table-bordered">
-				<thead>
-					<tr role="row">
-						<th><?php echo Filtration\Core\System::translate("Date"); ?></th>
-						<th><?php echo Filtration\Core\System::translate("IP Address"); ?></th>
-						<th><?php echo Filtration\Core\System::translate("Status"); ?></th>
-					</tr>
-				</thead>
-				<tbody>
-					<?php foreach ($this->userlogins as $userlogin) { ?>
-						<tr role="row" class="odd">
-							<td class="sorting_1"><?php echo Filtration\Core\System::escape($userlogin->login_date); ?></td>
-							<td><?php echo Filtration\Core\System::escape($userlogin->login_ip); ?></td>
-							<td><?php echo Filtration\Core\System::escape($userlogin->login_status); ?></td>
+    <div class="panel panel-body">
+	    <div class="table-responsive">
+	        <?php if($this->userlogins): ?>
+				<table class="table table-bordered">
+					<thead>
+						<tr role="row">
+							<th><?php echo Filtration\Core\System::translate("Date"); ?></th>
+							<th><?php echo Filtration\Core\System::translate("IP Address"); ?></th>
+							<th><?php echo Filtration\Core\System::translate("Status"); ?></th>
 						</tr>
-					<?php } ?>
-				</tbody>
-			</table>
-		<?php else: ?>
-			<div class="alert alert-info">
-				<?php echo Filtration\Core\System::translate("There have been no logins for this account"); ?>
-			</div>
-		<?php endif; ?>
-    </div>
+					</thead>
+					<tbody>
+						<?php foreach ($this->userlogins as $userlogin) { ?>
+							<tr role="row" class="odd">
+								<td class="sorting_1"><?php echo Filtration\Core\System::escape($userlogin->login_date); ?></td>
+								<td><?php echo Filtration\Core\System::escape($userlogin->login_ip); ?></td>
+								<td><?php echo Filtration\Core\System::escape($userlogin->login_status); ?></td>
+							</tr>
+						<?php } ?>
+					</tbody>
+				</table>
+			<?php else: ?>
+				<div class="alert alert-info">
+					<?php echo Filtration\Core\System::translate("There have been no logins for this account"); ?>
+				</div>
+			<?php endif; ?>
+	    </div>
+	</div>
 </div>
 
 <div class="col-sm-5 col-xs-12">    
     <div class="panel-heading">
         <h3 class="panel-title"><?php echo Filtration\Core\System::translate("Whitelist IP Addresses"); ?></h3>
     </div>
-    <div class="panel-body">
+    <div class="panel panel-body">
         <?php echo Filtration\Core\System::translate("If you add 1 or more whitelisted IP Addresses you will not be able to login with another
 									 non-whitelisted IP. You can add and remove IP addresses. It is not recommended for you
 									 to use if you have a dynamic IP"); ?>

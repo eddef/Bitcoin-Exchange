@@ -14,7 +14,7 @@ Class InvoiceModel
 				
 		//run sql
         $getorder = $database->prepare($sql);
-        $getorder->execute(array(Session::get('id'), $id));
+        $getorder->execute(array(Session::get('user_id'), $id));
         
 		//return the results
 		return $getorder->fetch();

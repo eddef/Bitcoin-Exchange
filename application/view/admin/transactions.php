@@ -33,7 +33,7 @@
         </table>
     <?php else: ?>
         <div class="alert alert-info">
-            <?php echo Filtration\Core\System::translate("You have not completed any transactions"); ?>
+            <?php echo Filtration\Core\System::translate("There has not been any transactions on the website"); ?>
         </div>
     <?php endif; ?>
 </div>

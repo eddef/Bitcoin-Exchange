@@ -5,6 +5,7 @@ use Filtration\Model\UserModel;
 use Filtration\Core\FormValidation; 
 use Filtration\Core\Alert;
 use Filtration\Model\ActivityModel;
+use Filtration\Core\Redirect;
 
 class UserController extends \Filtration\Core\Controller 
 {
@@ -50,7 +51,7 @@ class UserController extends \Filtration\Core\Controller
         // Let's define the rules and filters
         $rules = array(
             'mail'    => 'valid_email|required',
-            'password' => 'required'
+            'pass' => 'required'
         );
             
         
@@ -87,17 +88,11 @@ class UserController extends \Filtration\Core\Controller
 
     public function logout() 
     {
-        session_start();
-        session_unset();
-        session_destroy();
+        // log the user out
+        UserModel::logout();
 
-        //PUT THAT COOKIE DOWN, NOW! (Arnie reference)
-        if (isset($_COOKIE['XE_RememberMe'])) {
-            unset($_COOKIE['XE_RememberMe']);
-            setcookie('XE_RememberMe', null, -1, '/');
-        }
+        // redirect the user back home
         Redirect::to('home');
-        exit();
     }
 
 

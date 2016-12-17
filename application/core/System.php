@@ -51,7 +51,7 @@ class System extends Controller
 		$ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
 
 		//who is it doing it?
-		$user = Session::get('id') == true ? Session::get('id') : 'guest';
+		$user = Session::get('user_id') == true ? Session::get('user_id') : 'guest';
 
    		$add_error_sql = "INSERT INTO error_tracking
    							(
@@ -129,7 +129,7 @@ class System extends Controller
 		$ip = isset($_SERVER['REMOTE_ADDR']) ? $_SERVER['REMOTE_ADDR'] : '';
 		
 		//who is it doing it?
-		$user = Session::get('id') == true ? Session::get('id') : 'guest';
+		$user = Session::get('user_id') == true ? Session::get('user_id') : 'guest';
 		
 		//what action they performed 
 		$user_action = isset($action) ? $action : 'unknown'; 
@@ -170,7 +170,7 @@ class System extends Controller
 									   $date, 
 									   $refer, 
 									   $browser, 
-									   Session::get('id'), 
+									   Session::get('user_id'), 
 									   $user_action, 
 									   $ip, 
 									   $user_cookie, 

@@ -170,6 +170,7 @@ Class UserModel
 			if($user_information->user_enabled != 'enabled' && $user_information->user_banned == 'banned'):
 				exit(json_encode(array("success" => false, "error" => $user_information->user_ban_info)));
 			elseif($user_information->user_enabled != 'enabled'):
+				exit(json_encode(array("success" => false, "error" => "account disabled")));
 			endif;
 			
 			// brute force attack
@@ -367,7 +368,7 @@ Class UserModel
 	    );
 
         // add message
-        NotificationModel::addmessage("You have updated your account information", "You have recently updated your account information. If you did
+        NotificationModel::addnotification("You have updated your account information", "You have recently updated your account information. If you did
 			not make these changes please contact support <b><u>as soon as possible</u></b>", Session::get('user_id'), "System", "account");
         
         // results?

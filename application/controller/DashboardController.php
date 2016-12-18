@@ -178,27 +178,28 @@ class DashboardController extends \Filtration\Core\Controller {
     }
 
     public function dashboardtrades($coin = null) 
-	{
+    {
 
         header('Content-type: text/plain');
 
         $result = TradesModel::TradesDashboard($coin);
 
         // Print out rows
-        echo "{";
-        echo " \"data\": [";
-        foreach ($result as $row) {
-            echo $prefix . "[";
-            echo '"' . $row->amount . '",';
-            echo '"' . $row->market . '",';
-            echo '"' . $row->cost . '",';
-            echo '"' . $row->time . '",';
-            echo '"' . $row->user . '",';
-            echo '"' . $row->buysell . '"';
-            echo "]";
-            $prefix = ", ";
-        }
-        echo "]}";
+        echo json_encode
+        (
+            [
+                "data" => 
+                [
+                    // probably add the namespace to the top and then call System::escape()
+                    Filtration\Core\System::escape($row->amount), 
+                    Filtration\Core\System::escape($row->market),
+                    Filtration\Core\System::escape($row->cost),
+                    Filtration\Core\System::escape($row->time),
+                    Filtration\Core\System::escape($row->user),
+                    Filtration\Core\System::escape($row->buysell)
+                ]
+            ]
+        );
     }
 
     public function dashboardprice($coin = 'BTC_USD', $type = null) 

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 14, 2016 at 10:22 PM
+-- Generation Time: Dec 18, 2016 at 01:37 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -76,12 +76,19 @@ CREATE TABLE `banlist` (
 
 CREATE TABLE `coins` (
   `coin_id` int(11) NOT NULL,
-  `coin_coin` text NOT NULL,
+  `coin_coin` varchar(25) NOT NULL,
   `coin_description` text NOT NULL,
-  `coin_title` text NOT NULL,
-  `coin_market` int(11) NOT NULL,
-  `coin_enabled` int(11) NOT NULL
+  `coin_title` varchar(50) NOT NULL,
+  `coin_market` varchar(11) NOT NULL,
+  `coin_enabled` varchar(11) NOT NULL DEFAULT 'enabled'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `coins`
+--
+
+INSERT INTO `coins` (`coin_id`, `coin_coin`, `coin_description`, `coin_title`, `coin_market`, `coin_enabled`) VALUES
+(1, 'btc', 'Bitcoin', 'BTC', 'btc_usd', 'enabled');
 
 -- --------------------------------------------------------
 
@@ -143,7 +150,7 @@ CREATE TABLE `logins` (
   `login_id` int(11) NOT NULL,
   `login_email` text NOT NULL,
   `login_ip` text NOT NULL,
-  `login_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `login_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `login_status` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -151,23 +158,9 @@ CREATE TABLE `logins` (
 -- Dumping data for table `logins`
 --
 
--- --------------------------------------------------------
-
---
--- Table structure for table `messages`
---
-
-CREATE TABLE `messages` (
-  `id` int(11) NOT NULL,
-  `title` text NOT NULL,
-  `message` text NOT NULL,
-  `user` text NOT NULL,
-  `messageread` varchar(10) NOT NULL DEFAULT 'unread',
-  `whofrom` text NOT NULL,
-  `type` text NOT NULL,
-  `date` datetime NOT NULL,
-  `tempdelete` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+INSERT INTO `logins` (`login_id`, `login_email`, `login_ip`, `login_date`, `login_status`) VALUES
+(8, 'demo@gmail.com', '::1', '2016-12-16 15:44:41', 'Successful login'),
+(9, 'demo@gmail.com', '::1', '2016-12-17 12:14:41', 'Successful login');
 
 -- --------------------------------------------------------
 
@@ -183,6 +176,24 @@ CREATE TABLE `news` (
   `enabled` int(11) NOT NULL,
   `date` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `notifications`
+--
+
+CREATE TABLE `notifications` (
+  `notification_id` int(11) NOT NULL,
+  `notification_title` text NOT NULL,
+  `notification_message` text NOT NULL,
+  `notification_user` text NOT NULL,
+  `notification_read` varchar(10) NOT NULL DEFAULT 'unread',
+  `notification_whofrom` text NOT NULL,
+  `notification_type` text NOT NULL,
+  `notification_date` datetime NOT NULL,
+  `notification_tempdelete` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -347,12 +358,19 @@ CREATE TABLE `transactions` (
 --
 
 CREATE TABLE `userguides` (
-  `id` int(11) NOT NULL,
-  `title` text NOT NULL,
-  `message` text NOT NULL,
-  `date` int(11) NOT NULL,
-  `url` varchar(250) NOT NULL
+  `guide_id` int(11) NOT NULL,
+  `guide_title` varchar(150) NOT NULL,
+  `guide_message` text NOT NULL,
+  `guide_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `guide_url` varchar(250) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `userguides`
+--
+
+INSERT INTO `userguides` (`guide_id`, `guide_title`, `guide_message`, `guide_date`, `guide_url`) VALUES
+(1, 'How do I deposit bitcoins?', 'To deoposit bitcoins, you must go to:\r\n\r\nAnd then get the wallet address and visit;\r\n\r\nPlease include miners fee', '2016-12-16 00:00:00', '');
 
 -- --------------------------------------------------------
 
@@ -364,33 +382,31 @@ CREATE TABLE `users` (
   `user_id` bigint(11) NOT NULL,
   `user_ip_address` text NOT NULL,
   `user_username` varchar(25) NOT NULL,
-  `user_email` varbinary(100) NOT NULL,
-  `user_password` text NOT NULL,
-  `user_passwordsalt` text NOT NULL,
-  `user_admin` int(11) NOT NULL DEFAULT '0',
-  `user_staff` int(11) NOT NULL DEFAULT '0',
+  `user_email` varchar(100) NOT NULL,
+  `user_password` varchar(255) NOT NULL,
+  `user_role` varchar(11) NOT NULL DEFAULT 'member',
   `user_nofees` int(11) NOT NULL DEFAULT '0',
   `user_btc` decimal(10,4) DEFAULT '0.0000',
   `user_ltc` decimal(10,4) NOT NULL DEFAULT '0.0000',
   `user_usd` decimal(10,2) NOT NULL DEFAULT '0.00',
   `user_gbp` decimal(10,2) NOT NULL DEFAULT '0.00',
   `user_eur` decimal(10,2) NOT NULL DEFAULT '0.00',
-  `user_firstname` varbinary(100) DEFAULT NULL,
-  `user_lastname` varbinary(100) DEFAULT NULL,
-  `user_address1` varbinary(100) DEFAULT NULL,
-  `user_address2` varbinary(100) DEFAULT NULL,
-  `user_city` varbinary(100) DEFAULT NULL,
-  `user_zip` varbinary(100) DEFAULT NULL,
-  `user_state` varbinary(100) DEFAULT NULL,
-  `user_country` varbinary(100) DEFAULT NULL,
-  `user_dob` varbinary(100) DEFAULT NULL,
-  `user_security_question2` varbinary(100) NOT NULL,
-  `user_security_answer1` varbinary(100) NOT NULL,
-  `user_security_question1` varbinary(100) NOT NULL,
-  `user_security_answer2` varbinary(100) NOT NULL DEFAULT 'english',
-  `user_emailverified` int(11) NOT NULL DEFAULT '0',
+  `user_firstname` varchar(100) DEFAULT NULL,
+  `user_lastname` varchar(100) DEFAULT NULL,
+  `user_address1` varchar(100) DEFAULT NULL,
+  `user_address2` varchar(100) DEFAULT NULL,
+  `user_city` varchar(100) DEFAULT NULL,
+  `user_zip` varchar(100) DEFAULT NULL,
+  `user_state` varchar(100) DEFAULT NULL,
+  `user_country` varchar(100) DEFAULT NULL,
+  `user_dob` varchar(100) DEFAULT NULL,
+  `user_security_question2` varchar(100) NOT NULL,
+  `user_security_answer1` varchar(100) NOT NULL,
+  `user_security_question1` varchar(100) NOT NULL,
+  `user_security_answer2` varchar(100) NOT NULL DEFAULT '656e676c697368',
+  `user_emailverified` varchar(10) NOT NULL DEFAULT 'unverified',
   `user_email_code` varchar(250) NOT NULL,
-  `user_detailverified` int(11) NOT NULL DEFAULT '0',
+  `user_detailverified` varchar(10) NOT NULL DEFAULT 'unverified',
   `user_detailssubmitted` int(11) NOT NULL DEFAULT '0',
   `user_invalidid` int(11) NOT NULL,
   `user_verifyimg` text NOT NULL,
@@ -404,7 +420,8 @@ CREATE TABLE `users` (
   `user_referer` text NOT NULL,
   `user_loginnotify` int(11) DEFAULT NULL,
   `user_withdrawnotify` int(11) DEFAULT NULL,
-  `user_voicecommands` int(11) DEFAULT NULL
+  `user_voicecommands` int(11) DEFAULT NULL,
+  `user_enabled` varchar(10) NOT NULL DEFAULT 'enabled'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 CHECKSUM=1;
 
 --
@@ -464,16 +481,16 @@ ALTER TABLE `logins`
   ADD PRIMARY KEY (`login_id`);
 
 --
--- Indexes for table `messages`
---
-ALTER TABLE `messages`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Indexes for table `news`
 --
 ALTER TABLE `news`
   ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `notifications`
+--
+ALTER TABLE `notifications`
+  ADD PRIMARY KEY (`notification_id`);
 
 --
 -- Indexes for table `orders`
@@ -527,7 +544,7 @@ ALTER TABLE `transactions`
 -- Indexes for table `userguides`
 --
 ALTER TABLE `userguides`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`guide_id`);
 
 --
 -- Indexes for table `users`
@@ -548,7 +565,7 @@ ALTER TABLE `addresses`
 -- AUTO_INCREMENT for table `api`
 --
 ALTER TABLE `api`
-  MODIFY `api_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `api_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `banlist`
 --
@@ -558,7 +575,7 @@ ALTER TABLE `banlist`
 -- AUTO_INCREMENT for table `coins`
 --
 ALTER TABLE `coins`
-  MODIFY `coin_id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `coin_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `emailactivate`
 --
@@ -578,17 +595,17 @@ ALTER TABLE `identifications`
 -- AUTO_INCREMENT for table `logins`
 --
 ALTER TABLE `logins`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `messages`
---
-ALTER TABLE `messages`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT for table `news`
 --
 ALTER TABLE `news`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `notifications`
+--
+ALTER TABLE `notifications`
+  MODIFY `notification_id` int(11) NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `orders`
 --
@@ -628,12 +645,12 @@ ALTER TABLE `transactions`
 -- AUTO_INCREMENT for table `userguides`
 --
 ALTER TABLE `userguides`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `guide_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `user_id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `user_id` bigint(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

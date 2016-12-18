@@ -121,7 +121,7 @@
                     <div class="input-group-addon">
                         <i class="linecons-lock"></i>
                     </div>
-                    <input type="text" name="securitya2" id="securitya2" data-validate="required" class="form-control" placeholder="<?php echo Filtration\Core\System::translate(" Security Question Answer "); ?>"/>
+                    <input type="text" name="securitya2" id="securitya2" data-validate="required" class="form-control" placeholder="<?php echo Filtration\Core\System::translate("Security Question Answer"); ?>"/>
                 </div>
             </div>
                 

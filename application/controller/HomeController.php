@@ -2,35 +2,36 @@
 namespace Filtration\Controller;
 
 use Filtration\Model\OrdersModel;
+use Filtration\Model\ChartModel;
 
 class HomeController extends \Filtration\Core\Controller {
 
-    public function index($market = 'btc_usd') 
+    public function index($market = 'btc_usd')
 	{
 		$this->View->Render('home/index', array('market' => $market));
     }
 
-    public function liveorders() 
+    public function liveorders()
 	{
-		
+
 		//get the orders
         $buymarket = OrdersModel::homeorders('homebuy');
         $sellmarket = OrdersModel::homeorders('homesell');
         $trademarket = OrdersModel::homeorders('hometrade');
-       
+
 		$this->View->RenderMulti
         (
             array('home/liveorders'), array
             (
-                'buymarket' => $buymarket, 
+                'buymarket' => $buymarket,
 				'sellmarket' => $sellmarket,
 				'trademarket' => $trademarket
             )
         );
     }
-	
 
-    public function order_book($market = 'btc_usd') 
+
+    public function order_book($market = 'btc_usd')
 	{
 		//get orders and trades
         $buyorders = OrdersModel::openhomeorders($market, 'buy');
@@ -48,7 +49,7 @@ class HomeController extends \Filtration\Core\Controller {
         );
     }
 
-    public function datacharts($market = 'btc_usd') 
+    public function datacharts($market = 'btc_usd')
 	{
         // get the data for the charts
         $chartdata = ChartModel::home($market);
@@ -57,7 +58,7 @@ class HomeController extends \Filtration\Core\Controller {
         $result = array();
         foreach ($chartdata as $data) {
 
-            array_push($result, 
+            array_push($result,
                     array(strtotime($data->trade_date) * 1000,
                           $data->amount,
                           number_format($data->total, 4)
@@ -68,7 +69,7 @@ class HomeController extends \Filtration\Core\Controller {
         print json_encode($result, JSON_NUMERIC_CHECK);
     }
 
-    public function language() 
+    public function language()
 	{
         $language = isset($_GET['id']) ? $_GET['id'] : '';
         if (!empty($language)):

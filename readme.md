@@ -51,9 +51,9 @@ To access your model in your controller, use the `use` function:
 
 #Installation#
 
-    Use composer and Cd to your folder, and run: composer update
     Enable GMP: In your PHP.INI file, uncomment extension=php_gmp.dll 
-
+    Use composer and Cd to your folder, and run: composer update
+    
 
 Librarys:
 - Using Bit-wasp https://github.com/Bit-Wasp/bitcoin-php for the walllet

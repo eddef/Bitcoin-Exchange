@@ -1,22 +1,20 @@
 <?php
 namespace Filtration\Model;
 
+use Filtration\Core\Config;
 use Filtration\Core\DatabaseFactory;
 
 Class CoinsModel
 {
 
+	/*
+	 * rewrite this method
+	 */
 	public static function btccoin()
 	{
-	    // require APP . 'libs/easybitcoin.php';
-        require Config::get('PATH_LIBS') . 'jsonRPCClient.php'; 
-		// $bitcoin = new jsonRPCClient("");
-		$bitcoin = new jsonRPCClient("");
-	    
-	    // return the client
-	    return $bitcoin;
-	    
-	    //echo $bitcoin->getnewaddress();
+	    // iniate the coin in here, use some library, and include via vendor
+	    // and then add the namespace to the top of this file and then iniate it
+	    // like BitcoinClass\Core\BTC::start(); <--- psuedo code....
 
 	}
 

@@ -1,22 +1,22 @@
 <div class="panel panel-default">
     <div class="panel-heading">
-        <h3 class="panel-title"><?php echo Filtration\Core\System::translate("Deposit"); echo ' ' . System::escape($this->market); ?></h3>
+        <h3 class="panel-title"><?php echo Filtration\Core\System::translate("Deposit"). Filtration\Core\System::escape($this->market); ?></h3>
     </div>
     <div class="panel-body">
 
         <div class="col-sm-4 col-sm-offset-4">
-            <img src="https://www.google.com/chart?cht=qr&chs=300x300&chl=<?php echo strtolower(System::escape($this->address->address_address)); ?>%3A<?php echo System::escape($this->market); ?>">
+            <img src="https://www.google.com/chart?cht=qr&chs=300x300&chl=<?php echo strtolower(Filtration\Core\System::escape($this->address->address_address)); ?>%3A<?php echo Filtration\Core\System::escape($this->market); ?>">
         </div>
         <div class="col-sm-6 col-sm-offset-3">
             <div class="input-group">
-                <input type="text" value="<?php echo System::escape($this->address->address_address); ?>" id="wallet" class="form-control">
+                <input type="text" value="<?php echo Filtration\Core\System::escape($this->address->address_address); ?>" id="wallet" class="form-control">
                 <span class="input-group-addon">
                     <span onClick="CopyToClipboard(); return false" style="cursor: pointer; cursor: hand;">
                         <?php echo Filtration\Core\System::translate("Copy"); ?>
                     </span> 
                 </span>
                 <span class="input-group-addon">
-                    <a href="<?php echo SITE_URL; ?>coins/GenerateWallet?coin=btc">
+                    <a href="<?php echo SURL; ?>coins/GenerateWallet?coin=btc">
                         <span onClick="CopyToClipboard(); return false" style="cursor: pointer; cursor: hand;">
                             <?php echo Filtration\Core\System::translate("New Address"); ?>
                         </span> 

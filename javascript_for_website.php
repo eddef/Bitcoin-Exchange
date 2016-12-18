@@ -16,7 +16,7 @@ $(function()
             {
                 if(data.success)
                 {
-                    location.href = "<?php echo ADMI_NSITE_URL; ?>";
+                    location.href = "<?php echo ADMIN_SITE_URL; ?>";
                 }
                 else
                 {
@@ -31,4 +31,22 @@ $(function()
         return false;
     });
 });
+</script>
+
+
+<script>
+    $(function ()
+    {
+        $("#bitcoindecrement").click(function ()
+        {
+            $("input#withdrawbitcoinfee").val($("input#withdrawbitcoin").val());
+        });
+    });
+    $(function ()
+    {
+        $("#bitcoinincrement").click(function ()
+        {
+            $("input#withdrawbitcoinfee").val($("input#withdrawbitcoin").val());
+        });
+    });
 </script>

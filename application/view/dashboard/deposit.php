@@ -1,4 +1,3 @@
-
 <div class="panel-heading">
     <h3 class="panel-title"><?php echo Filtration\Core\System::translate("Depositing and Withdrawing"); ?></h3>
 </div><!-- end panel-heading !-->
@@ -16,14 +15,14 @@
             <tbody class="middle-align">
                 <?php foreach ($this->deposit as $dcoin) { ?>
                     <tr role="row" class="odd">
-                        <td><?php echo System::escape($dcoin->coin_title); ?></td>
-                        <td><?php echo System::escape($this->user->{"user_".$dcoin->coin_coin}); ?></td>
-                        <td><?php echo System::escape($dcoin->coin_description); ?>
+                        <td><?php echo Filtration\Core\System::escape($dcoin->coin_title); ?></td>
+                        <td><?php echo Filtration\Core\System::escape($this->user->{"user_".$dcoin->coin_coin}); ?></td>
+                        <td><?php echo Filtration\Core\System::escape($dcoin->coin_description); ?>
                         <td>
-                            <a href="<?php echo SITE_URL; ?>/transfer/withdraw/<?php echo System::escape($dcoin->coin_coin); ?>" class="btn btn-secondary btn-sm btn-icon icon-left">
+                            <a href="<?php echo SURL; ?>/transfer/withdraw/<?php echo Filtration\Core\System::escape($dcoin->coin_coin); ?>" class="btn btn-secondary btn-sm btn-icon icon-left">
                                 <?php echo Filtration\Core\System::translate('Withdraw'); ?>
                             </a>
-                            <a href="<?php echo SITE_URL; ?>/transfer/deposit/<?php echo System::escape($dcoin->coin_coin); ?>" class="btn btn-danger btn-sm btn-icon icon-left pull-right">
+                            <a href="<?php echo SURL; ?>/transfer/deposit/<?php echo Filtration\Core\System::escape($dcoin->coin_coin); ?>" class="btn btn-danger btn-sm btn-icon icon-left pull-right">
                                 <?php echo Filtration\Core\System::translate('Deposit'); ?>
                             </a>
                         </td>
@@ -34,20 +33,3 @@
     </div>
 </div>
 
-
-<script>
-    $(function ()
-    {
-        $("#bitcoindecrement").click(function ()
-        {
-            $("input#withdrawbitcoinfee").val($("input#withdrawbitcoin").val());
-        });
-    });
-    $(function ()
-    {
-        $("#bitcoinincrement").click(function ()
-        {
-            $("input#withdrawbitcoinfee").val($("input#withdrawbitcoin").val());
-        });
-    });
-</script>

@@ -301,8 +301,8 @@ Class UserModel
 				/*
 				Mail::sendemail($email, 'Welcome to '.SITE_NAME, $firstname.' '.$surname, "You have recently registered to ".SITE_NAME." 
 										You can now upload files for other people to download
-										Please verify your email: <a href='".Config::get('SITE_URL')."user/verify_email/{$email}/
-										{$email_code}'>".Config::get('SITE_URL')."user/verify_email/{$email}/{$email_code}</a>");
+										Please verify your email: <a href='".Config::get('SURL')."user/verify_email/{$email}/
+										{$email_code}'>".Config::get('SURL')."user/verify_email/{$email}/{$email_code}</a>");
 				*/
 			endif;
 					

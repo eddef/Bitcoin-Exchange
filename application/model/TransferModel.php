@@ -2,6 +2,7 @@
 namespace Filtration\Model;
 
 use Filtration\Core\DatabaseFactory;
+use Filtration\Core\Session;
 
 Class TransferModel
 {

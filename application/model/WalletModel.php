@@ -2,13 +2,14 @@
 namespace Filtration\Model;
 
 use Filtration\Core\DatabaseFactory;
+use Filtration\Core\Session;
+use BitWasp\Bitcoin\Bitcoin;
+use BitWasp\Bitcoin\Key\Deterministic\HierarchicalKeyFactory;
 
 Class WalletModel
 {
 	public static function wallet($startcoin, $coin, $generate = null) 
 	{
-        $wallet = $coin->getnewaddress();
-        
         //sql to run
         $sql = "INSERT INTO addresses
         		(
@@ -31,8 +32,14 @@ Class WalletModel
 		//pre-iniate the sql
 		$addwallet = $database->prepare($sql);
 
+        // iniate bit-wasp 
+        $network = Bitcoin::getNetwork();
+
+        // master key for the wallet
+        $master = HierarchicalKeyFactory::generateMasterKey();
+        
         //iniate new address
-        $wallet = $coin->getnewaddress();
+        $wallet = $master->getPublicKey()->getAddress()->getAddress();
         
         //get their address is they have one
         $wallets = SELF::wallet_address($startcoin);
@@ -45,12 +52,13 @@ Class WalletModel
         }
         else
         {
-        	if(!$wallets):
+        	if(!$wallets){
         	   $addwallet->execute(array($wallet, $startcoin, Session::get('user_id')));
         	   return $wallet;
-        	else:
+        	}
+            else{
         		return $wallets;
-        	endif;
+            }
         }
         
     }

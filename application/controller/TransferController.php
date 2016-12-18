@@ -1,6 +1,13 @@
 <?php
+namespace Filtration\Controller;
 
-class TransferController extends Controller 
+use Filtration\Model\CoinsModel;
+use Filtration\Model\TransferModel;
+use Filtration\Model\UserModel;
+use Filtration\Model\WalletModel;
+
+
+class TransferController extends \Filtration\Core\Controller 
 {
 
     public function deposit($coin) 
@@ -15,21 +22,21 @@ class TransferController extends Controller
         $deposits = TransferModel::transaction(strtolower($coin), 'deposits');
         
         //iniate the coin
-        Switch($coin):
-            case: 'btc':
+        switch($coin){
+            case 'btc':
                 $maincoin = CoinsModel::btccoin();
-        break;
-            case: 'ltc':
+            break;
+            case 'ltc':
                 $maincoin = CoinsModel::ltccoin();
-        break;
-        endswitch;
+            break;
+        }
         
 
 
         //deposit
         $address = WalletModel::wallet($coin, $maincoin);
 
-		$this->View->RenderPage_sidebar('transfer/deposit', 
+		$this->View->Render('transfer/deposit', 
                 array
                 (
                     'market'   => $coin, 
@@ -54,7 +61,7 @@ class TransferController extends Controller
         //get their payees
         $payees = TransferModel::payees(strtolower($coin));
 
-        $this->View->RenderPage_sidebar('transfer/withdraw', array('market' => $coin, 'withdraw' => $withdraw, 'payees' => $payees, 'user' => $user));
+        $this->View->Render('transfer/withdraw', array('market' => $coin, 'withdraw' => $withdraw, 'payees' => $payees, 'user' => $user));
     }
 
     public function payees($coin = null) 
@@ -69,7 +76,7 @@ class TransferController extends Controller
         //get their payees
         $payees = TransferModel::payees(strtolower($coin));
 
-        $this->View->RenderPage_sidebar('transfer/payee', array('payees' => $payees));
+        $this->View->Render('transfer/payee', array('payees' => $payees));
 
     }
     
@@ -85,6 +92,9 @@ class TransferController extends Controller
     }
 
 
+    /*
+     * Edit this method, rewrite and clean it
+     */
     public function payment() 
     {
         $market = isset($_POST['ok_txn_currency']) ? strtolower($_POST['ok_txn_currency']) : '';

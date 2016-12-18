@@ -1,13 +1,14 @@
 {
     "name": "Bitcoin Exchange",
     "type": "project",
-    "description": "A simple Bitcoin exchange writte in PHP",
+    "description": "A simple Bitcoin exchange written in PHP",
     "license": "MIT",
     "require-dev": {
         "php": ">=5.5.0",
         "phpmailer/phpmailer": "~5.2",
         "gregwar/captcha": "~1.1",
-        "phpunit/phpunit": "~4.8"
+        "phpunit/phpunit": "~4.8",
+        "bitwasp/bitcoin": "dev-master"
     },
     "autoload": {
         "psr-4": {

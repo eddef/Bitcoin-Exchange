@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 18, 2016 at 01:37 PM
+-- Generation Time: Dec 18, 2016 at 02:25 PM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 7.0.13
 
@@ -27,14 +27,22 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `addresses` (
-  `id` int(11) NOT NULL,
-  `address` text NOT NULL,
-  `coin` text NOT NULL,
-  `username` text NOT NULL,
-  `date` datetime NOT NULL,
-  `name` varchar(50) DEFAULT NULL,
-  `type` varchar(50) DEFAULT NULL
+  `address_id` int(11) NOT NULL,
+  `address_address` text NOT NULL,
+  `address_coin` text NOT NULL,
+  `address_user` bigint(20) NOT NULL,
+  `address_date` datetime NOT NULL,
+  `address_name` varchar(50) DEFAULT NULL,
+  `address_type` varchar(50) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `addresses`
+--
+
+INSERT INTO `addresses` (`address_id`, `address_address`, `address_coin`, `address_user`, `address_date`, `address_name`, `address_type`) VALUES
+(1, '19BqStcmnashR4FMz2oDR7v6cjPrnjkfFi', 'btc', 4, '0000-00-00 00:00:00', NULL, 'withdraw'),
+(2, '1C4wAxfyh4ednHDaixht1ZTxSXPzZGVk5a', 'assets', 4, '0000-00-00 00:00:00', NULL, 'withdraw');
 
 -- --------------------------------------------------------
 
@@ -160,7 +168,8 @@ CREATE TABLE `logins` (
 
 INSERT INTO `logins` (`login_id`, `login_email`, `login_ip`, `login_date`, `login_status`) VALUES
 (8, 'demo@gmail.com', '::1', '2016-12-16 15:44:41', 'Successful login'),
-(9, 'demo@gmail.com', '::1', '2016-12-17 12:14:41', 'Successful login');
+(9, 'demo@gmail.com', '::1', '2016-12-17 12:14:41', 'Successful login'),
+(10, 'demo@gmail.com', '::1', '2016-12-18 12:44:28', 'Successful login');
 
 -- --------------------------------------------------------
 
@@ -427,7 +436,6 @@ CREATE TABLE `users` (
 --
 -- Dumping data for table `users`
 --
-
 --
 -- Indexes for dumped tables
 --
@@ -436,7 +444,7 @@ CREATE TABLE `users` (
 -- Indexes for table `addresses`
 --
 ALTER TABLE `addresses`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`address_id`);
 
 --
 -- Indexes for table `api`
@@ -560,7 +568,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `addresses`
 --
 ALTER TABLE `addresses`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `address_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `api`
 --
@@ -595,7 +603,7 @@ ALTER TABLE `identifications`
 -- AUTO_INCREMENT for table `logins`
 --
 ALTER TABLE `logins`
-  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `login_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `news`
 --

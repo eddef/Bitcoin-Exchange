@@ -85,11 +85,11 @@ class ApiController extends \Filtration\Core\Controller
 
         //$ticker = ApiModell::ticker($market);
         $result = array();
-        if (CoinsModel::coins($market) == false):
+        if (CoinsModel::coins($market) == false){
             array_push($result, array('error' => 'invalid market'));
             echo json_encode(array("ticker" => $result));
             die();
-        endif;
+        }
         
         //get the ticker information
         array_push($result, array('market' => $market,

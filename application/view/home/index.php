@@ -1,6 +1,4 @@
 <?php 
-use Filtration\Core\Session; 
-use Filtration\Core\System; 
 use Filtration\Model\CoinsModel;
 ?>
 <div class="main-content">
@@ -33,12 +31,10 @@ use Filtration\Model\CoinsModel;
     <div class="col-sm-2 col-sm-offset-8">
         <select class="form-control" name="chartmarket" onchange="location = this.options[this.selectedIndex].value;">
             <option>Select Market</option>
-            <?php
-            $coinmarket = CoinsModel::coins();
-            $coinmarket = explode(",", $coinmarket->coins);
-            foreach ($coinmarket as $coinlinks) {
-                ?>
-                <option value="<?php echo SURL . '/home/'. System::escape($coinlinks); ?>"><?php echo str_replace('_', '/', $coinlinks); ?></option>
+            <?php foreach ($this->markets as $coinlinks) { ?>
+                <option value="<?php echo SURL; ?>/home/order_book/<?php echo Filtration\Core\System::escape($coinlinks->coin_id); ?>">
+                    <?php echo Filtration\Core\System::escape($coinlinks->coin_market); ?>
+                </option>
             <?php } ?>
         </select>
     </div>
@@ -50,8 +46,6 @@ use Filtration\Model\CoinsModel;
 
         <!--close .wrapper--> 
     </div>
-
-
 
     <section id="top" class="contain clearfix">
         <div class="container">

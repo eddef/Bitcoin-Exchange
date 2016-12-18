@@ -24,33 +24,29 @@ Class CoinsModel
 		$database = DatabaseFactory::getFactory()->getConnection();  
 		
 		//sql to run
-		$sql = "SELECT * from settings";
+		$sql = "SELECT * from coins";
 		
 		//run the sql
         $coin = $database->prepare($sql);
         $coin->execute();
         
 		//get the info
-		return $coin->fetch();
+		return $coin->fetchAll();
         
     }
 	
-    public static function coin_exists($check_coin = null) 
+    public static function coin($check_coin = null) 
 	{
 		//iniate the database
 		$database = DatabaseFactory::getFactory()->getConnection();  
 		
 		//sql to run
-		$sql = "SELECT * from settings";
+		$sql = "SELECT * from coins
+				WHERE coin_id = ?";
 		
 		//run the sql
         $coin = $database->prepare($sql);
-        $coin->execute();
-        
-		//get the info
-        $coins = explode(",", $coin->fetch()->coins);
-        
-		//return if the coin exists
-		return in_array($check_coin, $coins);
+        $coin->execute([$check_coin]);
+       
     }
 }

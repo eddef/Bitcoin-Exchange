@@ -1,57 +1,63 @@
 <?php
 namespace Filtration\Controller;
 
+use Filtration\Model\ChartModel;
+use Filtration\Model\CoinsModel;
 use Filtration\Model\OrdersModel;
 use Filtration\Model\TradesModel;
-use Filtration\Model\ChartModel;
 
 class HomeController extends \Filtration\Core\Controller {
 
     public function index($market = 'btc_usd') 
-	{
-		$this->View->Render('home/index', array('market' => $market));
+    {
+        // get the coins
+        $markets = CoinsModel::coins();
+
+        $this->View->Render('home/index', ['markets' => $markets]);
     }
 
     public function liveorders() 
-	{
-		
-		//get the orders
+    {
+        
+        //get the orders
         $buymarket = OrdersModel::homeorders('homebuy');
         $sellmarket = OrdersModel::homeorders('homesell');
         $trademarket = OrdersModel::homeorders('hometrade');
        
-		$this->View->RenderMulti
+        $this->View->RenderMulti
         (
-            array('home/liveorders'), array
-            (
+            [
+                'home/liveorders'
+            ],
+            [
                 'buymarket' => $buymarket, 
-				'sellmarket' => $sellmarket,
-				'trademarket' => $trademarket
-            )
+                'sellmarket' => $sellmarket,
+                'trademarket' => $trademarket
+            ]
         );
     }
-	
+    
 
     public function order_book($market = 'btc_usd') 
-	{
-		//get orders and trades
+    {
+        //get orders and trades
         $buyorders = OrdersModel::openhomeorders($market, 'buy');
         $sellorders = OrdersModel::openhomeorders($market, 'sell');
         $trades = TradesModel::TradesDashboard($market);
 
-		$this->View->RenderPage_sidebar
+        $this->View->Render
         (
             'home/order_book', array
             (
                 'buyorders' => $buyorders,
-			    'sellorders' => $sellorders,
-			    'trades' => $trades
+                'sellorders' => $sellorders,
+                'trades' => $trades
             )
         );
     }
 
     public function datacharts($market = 'btc_usd') 
-	{
+    {
         // get the data for the charts
         $chartdata = ChartModel::home($market);
 
@@ -75,7 +81,7 @@ class HomeController extends \Filtration\Core\Controller {
      * to: todo.txt
      */
     public function language() 
-	{
+    {
         $language = isset($_GET['id']) ? $_GET['id'] : '';
         if (!empty($language)):
             //also probably add to user account but just set cookie ftb

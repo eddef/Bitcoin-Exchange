@@ -1,1 +1,4 @@
 todo: fix css on admin coin admin
+rewrite public function language() in homecontroller
+Replace System::escape site-wide with Filtration\Core\Filter\XSSFilter();
+Escape some json varaibles

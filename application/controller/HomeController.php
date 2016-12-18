@@ -2,6 +2,8 @@
 namespace Filtration\Controller;
 
 use Filtration\Model\OrdersModel;
+use Filtration\Model\TradesModel;
+use Filtration\Model\ChartModel;
 
 class HomeController extends \Filtration\Core\Controller {
 
@@ -59,8 +61,8 @@ class HomeController extends \Filtration\Core\Controller {
 
             array_push($result, 
                     array(strtotime($data->trade_date) * 1000,
-                          $data->amount,
-                          number_format($data->total, 4)
+                          $data->trade_amount,
+                          number_format($data->trade_total, 4)
                         )
                     );
         }
@@ -68,6 +70,10 @@ class HomeController extends \Filtration\Core\Controller {
         print json_encode($result, JSON_NUMERIC_CHECK);
     }
 
+    /*
+     * Will remove this method and re-write it. Added
+     * to: todo.txt
+     */
     public function language() 
 	{
         $language = isset($_GET['id']) ? $_GET['id'] : '';

@@ -80,7 +80,7 @@
                         <td><?php echo System::escape($banneduser->user_banneduntil); ?></td>
                         <td><?php echo System::escape($banneduser->user_reason); ?></td>				  
                         <td>
-                            <a href="<?php echo ADMIN_SITE_URL; ?>/unban/<?php echo System::escape($banneduser->user_id); ?>" class="btn btn-secondary btn-sm btn-icon icon-left">
+                            <a href="<?php echo ADMIN_SURL; ?>/unban/<?php echo System::escape($banneduser->user_id); ?>" class="btn btn-secondary btn-sm btn-icon icon-left">
                                 Unban
                         </td>
                     </tr>

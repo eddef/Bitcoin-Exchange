@@ -14,7 +14,7 @@ Class PagesModel
 		$sql = "SELECT page_body, 
 					   page_title 
 				FROM pages 
-				WHERE page_SITE_URL = ?";
+				WHERE page_SURL = ?";
 		
 		//run the sql
         $getpage = $database->prepare($sql);

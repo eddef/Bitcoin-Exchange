@@ -1,6 +1,6 @@
 <div class="col-sm-12">
     <div class="btn-group pull-right m-t-15">
-        <a href="<?php echo ADMIN_SITE_URL; ?>/addguide" class="btn btn-default">Add Guide</a>
+        <a href="<?php echo ADMIN_SURL; ?>/addguide" class="btn btn-default">Add Guide</a>
     </div>
 
     <h4 class="page-title">Guides</h4>
@@ -14,7 +14,7 @@
                 <div class="panel-heading">
                     <h4 class="panel-title">
                         <a data-toggle="collapse" data-parent="#accordion-test" href="#collapseOne" class="collapsed">
-                            <a href="<?php echo ADMIN_SITE_URL; ?>/editguide/<?php echo Filtration\Core\System::escape($guide->guide_id); ?>">
+                            <a href="<?php echo ADMIN_SURL; ?>/editguide/<?php echo Filtration\Core\System::escape($guide->guide_id); ?>">
                                 <?php echo Filtration\Core\System::escape($guide->guide_title); ?>
                             </a>
                         </a>

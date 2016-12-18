@@ -3,7 +3,7 @@
         <h3 class="panel-title"><?php echo Filtration\Core\System::translate("Update Coin"); ?></h3>
     </div>
     <div class="panel-body">
-        <form role="form" action="<?php echo ADMINSITE_URL; ?>/updatecoin/" method="POST" class="validate" novalidate="novalidate">
+        <form role="form" action="<?php echo ADMINSURL; ?>/updatecoin/" method="POST" class="validate" novalidate="novalidate">
 
             <div class="row col-margin">
                 <div class="col-xs-6">

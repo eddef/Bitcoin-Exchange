@@ -14,7 +14,7 @@
         </div>
         <div class="panel-body">
 
-            <form method="POST" action="<?php echo SITE_URL; ?>user/passreset" role="form">
+            <form method="POST" action="<?php echo SURL; ?>user/passreset" role="form">
                 <input value="<?php echo htmlentities($email); ?>" name="email" type="hidden" />
                 <input value="1" name="submit" type="hidden" />
 

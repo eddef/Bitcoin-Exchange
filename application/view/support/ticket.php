@@ -2,27 +2,27 @@
     <div class="row">
         <div class="col-sm-3 mailbox-left">
             <div class="mailbox-sidebar">
-                <a href="<?php echo SITE_URL; ?>support/newticket" class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right">
+                <a href="<?php echo SURL; ?>support/newticket" class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right">
                     <i class="fa fa-pencil"></i><span><?php echo Filtration\Core\System::translate("Open Ticket"); ?></span> </a>
                 <ul class="list-unstyled mailbox-list">
                     <li class="active">
-                        <a href="<?php echo SITE_URL; ?>support/">
+                        <a href="<?php echo SURL; ?>support/">
                             <?php echo Filtration\Core\System::translate("All Tickets"); ?>
                             <span class="pull-right"><?php echo $all; ?></span> </a>
                     </li>
                     <li>
-                        <a href="<?php echo SITE_URL; ?>support/?type=open">
+                        <a href="<?php echo SURL; ?>support/?type=open">
                             <?php echo Filtration\Core\System::translate("Open Tickets"); ?>
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo SITE_URL; ?>support/?type=closed">
+                        <a href="<?php echo SURL; ?>support/?type=closed">
                             <?php echo Filtration\Core\System::translate("Closed Tickets"); ?>
                         </a>
                     </li>
                     <?php if ($this->model->isstaff() == true): ?>
                         <li>
-                            <a href="<?php echo SITE_URL; ?>support/admin">
+                            <a href="<?php echo SURL; ?>support/admin">
                                 <?php echo Filtration\Core\System::translate("Admin"); ?>
                             </a>
                         </li>
@@ -38,7 +38,7 @@
                     <h2><?php echo htmlentities($tickets->title, ENT_QUOTES); ?>
                         <span class="badge badge-success badge-roundless pull-right upper">
                             <?php echo htmlentities($tickets->category, ENT_QUOTES); ?></span>
-                        <a href="<?php echo SITE_URL; ?>support" class="go-back">
+                        <a href="<?php echo SURL; ?>support" class="go-back">
                             <i class="fa-angle-left"></i>Go Back</a></h2>
                 </div>
                 <div class="mail-single-info">
@@ -71,14 +71,14 @@
             ?>
             <div class="col-sm-9 mailbox-right">
                 <div class="form-group">
-                    <form role="form" action="<?php echo SITE_URL; ?>support/reply" method="post">
+                    <form role="form" action="<?php echo SURL; ?>support/reply" method="post">
                         <input type="hidden" name="check_submit" value="1">
                         <!-- you can try to change this but if you don't own the ticket it won't work, nice try. !-->
                         <input type="hidden" name="ticket" value="<?php echo $tickets->id; ?>">
                         <textarea name="message" class="form-control wysihtml5">
                             <?php
                             if ($this->model->isstaff() == true) :
-                                echo '<br/><br/>Kind regards, <br/> ' . $this->model->decrypt($user->firstname) . SITE_NAME. ' Support. <br/><img src="' . SITE_URL . '/img/logo.png">';
+                                echo '<br/><br/>Kind regards, <br/> ' . $this->model->decrypt($user->firstname) . SITE_NAME. ' Support. <br/><img src="' . SURL . '/img/logo.png">';
                             endif;
                             ?> 
                         </textarea>
@@ -89,7 +89,7 @@
                     </button>
                     
                     <?php if ($this->model->isstaff() == true): ?> 
-                        <a href="<?php echo SITE_URL; ?>support/resolved?id=<?php echo $tickets->id; ?>&ticket=close" type="submit" class="btn btn-primary pull-right" style="background-color: #428bca;">
+                        <a href="<?php echo SURL; ?>support/resolved?id=<?php echo $tickets->id; ?>&ticket=close" type="submit" class="btn btn-primary pull-right" style="background-color: #428bca;">
                             <i class="fa fa-tick"></i><?php echo Filtration\Core\System::translate("Ticket Resolved"); ?>
                         </a>
                     </div>
@@ -103,7 +103,7 @@
             ?> 
             <div class="col-sm-9 mailbox-right">
                 <div class="modal-footer clearfix">
-                    <a href="<?php echo SITE_URL; ?>support/resolved?id=<?php echo $tickets->id; ?>&ticket=open" type="submit" class="btn btn-primary pull-right" style="background-color: #428bca;">
+                    <a href="<?php echo SURL; ?>support/resolved?id=<?php echo $tickets->id; ?>&ticket=open" type="submit" class="btn btn-primary pull-right" style="background-color: #428bca;">
                         <i class="fa fa-tick"></i><?php echo Filtration\Core\System::translate("Open Ticket"); ?>
                     </a>
                 </div>

@@ -3,7 +3,7 @@
 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 <script>
     $(document).ready(function () {
-        $.getJSON('<?php echo SITE_URL; ?>home/datacharts', function (data) {
+        $.getJSON('<?php echo SURL; ?>home/datacharts', function (data) {
 
 
             var ohlc = [],

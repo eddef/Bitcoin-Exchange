@@ -13,17 +13,17 @@ class Coins extends Controller {
                 case 'btc':
                     $btc = $this->model->btccoin();
                     echo $this->model->wallet('btc', $btc, "generate");
-                    header('location: ' . SITE_URL . 'dashboard/deposit/');
+                    header('location: ' . SURL . 'dashboard/deposit/');
                     break;
                 case 'cxc':
                     $cxc = $this->model->cryptx();
                     echo $this->model->wallet('cxc', $cxc, "generate");
-                    header('location: ' . SITE_URL . 'dashboard/deposit/');
+                    header('location: ' . SURL . 'dashboard/deposit/');
                     break;
                 //more cases for more coins
             }
         }
-        header('location: ' . SITE_URL . 'dashboard/deposit/');
+        header('location: ' . SURL . 'dashboard/deposit/');
     }
 
     public function withdraw() {
@@ -46,14 +46,14 @@ class Coins extends Controller {
                         //add up all of their orders to check total orders
                         $total_coins += $row->beforefee;
                     }
-                    if ($amount < 0.0003): header('location: ' . SITE_URL . '/transfer/withdraw?error=4');
+                    if ($amount < 0.0003): header('location: ' . SURL . '/transfer/withdraw?error=4');
                         exit();
                     endif;
-                    if ($amount < $total_coins): header('location: ' . SITE_URL . '/transfer/withdraw?error=1');
+                    if ($amount < $total_coins): header('location: ' . SURL . '/transfer/withdraw?error=1');
                         exit();
                     endif;
                     //make sure they have enough balance to do this.
-                    if ($username->btc < $amount): echo header('location: ' . SITE_URL . '/transfer/withdraw?error=2');
+                    if ($username->btc < $amount): echo header('location: ' . SURL . '/transfer/withdraw?error=2');
                         die();
                     endif;
                     //initiate the btc wallet
@@ -64,10 +64,10 @@ class Coins extends Controller {
                     $withdraw = $this->model->withdraw('btc', $btc, $amount, $withdrawaddress);
                     //was it successful? 
                     if ($withdraw == true):
-                        header('location: ' . SITE_URL . 'dashboard/transactions?error=no');
+                        header('location: ' . SURL . 'dashboard/transactions?error=no');
                         die();
                     endif;
-                    //header('location: ' . SITE_URL . 'dashboard/deposit/');
+                    //header('location: ' . SURL . 'dashboard/deposit/');
                     die();
                     break;
                 case 'ltc':
@@ -78,11 +78,11 @@ class Coins extends Controller {
                         //add up all of their orders to check total orders
                         $total_coins += $row->beforefee;
                     }
-                    if ($amount < $total_coins): header('location: ' . SITE_URL . '/dashboard/deposit?error=1');
+                    if ($amount < $total_coins): header('location: ' . SURL . '/dashboard/deposit?error=1');
                         die();
                     endif;
                     //make sure they have enough balance to do this.
-                    if ($username->ltc < $amount): echo header('location: ' . SITE_URL . '/dashboard/deposit?error=2');
+                    if ($username->ltc < $amount): echo header('location: ' . SURL . '/dashboard/deposit?error=2');
                         die();
                     endif;
                     //initiate the ltc wallet
@@ -93,10 +93,10 @@ class Coins extends Controller {
                     $withdraw = $this->model->withdraw('ltc', $ltc, $amount, $withdrawaddress);
                     //was it successful? 
                     if ($withdraw == true):
-                        header('location: ' . SITE_URL . 'dashboard/transactions?error=no');
+                        header('location: ' . SURL . 'dashboard/transactions?error=no');
                         die();
                     endif;
-                    //header('location: ' . SITE_URL . 'dashboard/deposit/');
+                    //header('location: ' . SURL . 'dashboard/deposit/');
                     die();
                     break;
             }

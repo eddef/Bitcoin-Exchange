@@ -13,7 +13,7 @@
                     <div class="panel-body">
                         <?php echo $page->page_body; ?>
                         <br/>
-                        <a class="btn btn-danger pull-right" value="" href="<?php echo ADMIN_SITE_URL; ?>/editpage/<?php echo $page->page_id; ?>">
+                        <a class="btn btn-danger pull-right" value="" href="<?php echo ADMIN_SURL; ?>/editpage/<?php echo $page->page_id; ?>">
                             <?php echo Filtration\Core\System::translate("Edit page"); ?>
                         </a>
                     </div>

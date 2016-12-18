@@ -115,14 +115,14 @@
                             $imghref = explode(",", $this->edituser->user_verifyimg);
                             foreach ($imghref as $img => $key) {
                                 $imghref > 0;
-                                echo'<img class="col-xs-12 col-sm-6" src="' . ADMIN_SITE_URL . "/getuserimg?img=" . $key . '&user=' . $this->edituser->user_id . '">&nbsp;';
+                                echo'<img class="col-xs-12 col-sm-6" src="' . ADMIN_SURL . "/getuserimg?img=" . $key . '&user=' . $this->edituser->user_id . '">&nbsp;';
                             } if ($this->edituser->user_detailverified == 0 && $this->edituser->user_invalidid == 0) {
                                 ?>
                                 <br/><br/>
-                                <a href="<?php echo ADMIN_SITE_URL . '/invalidid/' . $this->edituser->user_id; ?>" class="btn btn-danger btn-sm btn-icon icon-left">
+                                <a href="<?php echo ADMIN_SURL . '/invalidid/' . $this->edituser->user_id; ?>" class="btn btn-danger btn-sm btn-icon icon-left">
                                     Invalid ID
                                 </a>
-                                <a href="<?php echo ADMIN_SITE_URL . '/validid/' . $this->edituser->user_id; ?>" class="btn btn-success btn-sm btn-icon icon-left">
+                                <a href="<?php echo ADMIN_SURL . '/validid/' . $this->edituser->user_id; ?>" class="btn btn-success btn-sm btn-icon icon-left">
                                     Valid ID
                                 </a>
                             </div>

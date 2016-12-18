@@ -18,13 +18,13 @@
                             $(document).ready(function () {
                                 document.getElementById('delete<?php echo $faq->id; ?>').onclick = function () {
                                     if (confirm('Are you sure?')) {
-                                        parent.location = '<?php echo ADMINSITE_URL . "/deletefaq/?id=" . $faq->id; ?>';
+                                        parent.location = '<?php echo ADMINSURL . "/deletefaq/?id=" . $faq->id; ?>';
                                     }
                                 };
                             });
                         </script>									 
                         <a class="btn btn-danger pull-right" id="delete<?php echo $faq->id; ?>">Delete FAQ</a>
-                        <a class="btn btn-success pull-right" value="" href="<?php echo ADMINSITE_URL; ?>/editfaq/?id=<?php echo $faq->id; ?>">Edit FAQ</a>
+                        <a class="btn btn-success pull-right" value="" href="<?php echo ADMINSURL; ?>/editfaq/?id=<?php echo $faq->id; ?>">Edit FAQ</a>
                     </div>
                 </div>
             </div>

@@ -11,7 +11,7 @@
             </div>
         </div>
         <div class="panel-body">
-            <form method="POST" action="<?php echo SITE_URL; ?>user/login" role="form">
+            <form method="POST" action="<?php echo SURL; ?>user/login" role="form">
                 <input value="1" name="check_submit" type="hidden" />
                 <input value="<?php echo htmlspecialchars($this->model->decrypt($email), ENT_QUOTES); ?>" name="mail" type="hidden" />
                 <input value="<?php echo htmlentities($password, ENT_QUOTES); ?>" name="pass" type="hidden" />

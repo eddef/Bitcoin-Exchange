@@ -22,7 +22,7 @@
                 <div class="invoice-logo">
 
                     <a href="#" class="logo">
-                        <img src="<?php echo SITE_URL; ?>img/logo.png" class="img-responsive">
+                        <img src="<?php echo SURL; ?>img/logo.png" class="img-responsive">
                     </a>
 
                     <ul class="list-unstyled">

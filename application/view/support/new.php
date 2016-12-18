@@ -2,13 +2,13 @@
     <div class="row">
         <div class="col-sm-3 mailbox-left">
             <div class="mailbox-sidebar">
-                <a href="<?php echo SITE_URL; ?>support/newticket" class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right">
+                <a href="<?php echo SURL; ?>support/newticket" class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right">
                     <i class="fa fa-pencil"></i><span><?php echo Filtration\Core\System::translate("Open Ticket"); ?></span> </a>
                 <ul class="list-unstyled mailbox-list">
-                    <li class="active"> <a href="<?php echo SITE_URL; ?>support/"><?php echo Filtration\Core\System::translate("All Tickets"); ?>
+                    <li class="active"> <a href="<?php echo SURL; ?>support/"><?php echo Filtration\Core\System::translate("All Tickets"); ?>
                             <span class="pull-right"><?php echo $all; ?></span> </a> </li>
-                    <li> <a href="<?php echo SITE_URL; ?>support/?type=open"><?php echo Filtration\Core\System::translate("Open Tickets"); ?></a> </li>
-                    <li> <a href="<?php echo SITE_URL; ?>support/?type=closed"><?php echo Filtration\Core\System::translate("Closed Tickets"); ?></a> </li>
+                    <li> <a href="<?php echo SURL; ?>support/?type=open"><?php echo Filtration\Core\System::translate("Open Tickets"); ?></a> </li>
+                    <li> <a href="<?php echo SURL; ?>support/?type=closed"><?php echo Filtration\Core\System::translate("Closed Tickets"); ?></a> </li>
                 </ul>
                 <div class="vspacer"></div>
             </div>

@@ -477,97 +477,97 @@ class FormValidation
 
             switch ($e['rule']) {
                 case 'mismatch' :
-                    $resp[] = "There is no validation rule for $field \n";
+                    $resp[] = "There is no validation rule for $field <br/>";
                     break;
                 case 'validate_required' :
-                    $resp[] = "The $field field is required \n";
+                    $resp[] = "The $field field is required <br/>";
                     break;
                 case 'validate_valid_email':
-                    $resp[] = "The $field field is required to be a valid email address \n";
+                    $resp[] = "The $field field is required to be a valid email address <br/>";
                     break;
                 case 'validate_max_len':
-                    $resp[] = "The $field field needs to be $param characters or shorter in length \n";
+                    $resp[] = "The $field field needs to be $param characters or shorter in length <br/>";
                     break;
                 case 'validate_min_len':
-                    $resp[] = "The $field field needs to be $param characters or longer in length \n";
+                    $resp[] = "The $field field needs to be $param characters or longer in length <br/>";
                     break;
                 case 'validate_exact_len':
-                    $resp[] = "The $field field needs to be exactly $param characters in length \n";
+                    $resp[] = "The $field field needs to be exactly $param characters in length <br/>";
                     break;
                 case 'validate_alpha':
-                    $resp[] = "The $field field may only contain alpha characters(a-z) \n";
+                    $resp[] = "The $field field may only contain alpha characters(a-z) <br/>";
                     break;
                 case 'validate_alpha_numeric':
-                    $resp[] = "The $field field may only contain alpha-numeric characters \n";
+                    $resp[] = "The $field field may only contain alpha-numeric characters <br/>";
                     break;
                 case 'validate_alpha_dash':
-                    $resp[] = "The $field field may only contain alpha characters &amp; dashes \n";
+                    $resp[] = "The $field field may only contain alpha characters &amp; dashes <br/>";
                     break;
                 case 'validate_numeric':
-                    $resp[] = "The $field field may only contain numeric characters \n";
+                    $resp[] = "The $field field may only contain numeric characters <br/>";
                     break;
                 case 'validate_integer':
-                    $resp[] = "The $field field may only contain a numeric value \n";
+                    $resp[] = "The $field field may only contain a numeric value <br/>";
                     break;
                 case 'validate_boolean':
-                    $resp[] = "The $field field may only contain a true or false value \n";
+                    $resp[] = "The $field field may only contain a true or false value <br/>";
                     break;
                 case 'validate_float':
-                    $resp[] = "The $field field may only contain a float value \n";
+                    $resp[] = "The $field field may only contain a float value <br/>";
                     break;
                 case 'validate_valid_url':
-                    $resp[] = "The $field field is required to be a valid URL \n";
+                    $resp[] = "The $field field is required to be a valid URL <br/>";
                     break;
                 case 'validate_url_exists':
-                    $resp[] = "The $field URL does not exist \n";
+                    $resp[] = "The $field URL does not exist <br/>";
                     break;
                 case 'validate_valid_ip':
-                    $resp[] = "The $field field needs to contain a valid IP address \n";
+                    $resp[] = "The $field field needs to contain a valid IP address <br/>";
                     break;
                 case 'validate_valid_cc':
-                    $resp[] = "The $field field needs to contain a valid credit card number \n";
+                    $resp[] = "The $field field needs to contain a valid credit card number <br/>";
                     break;
                 case 'validate_valid_name':
-                    $resp[] = "The $field field needs to contain a valid human name \n";
+                    $resp[] = "The $field field needs to contain a valid human name <br/>";
                     break;
                 case 'validate_contains':
                     $resp[] = "The $field field needs to contain one of these values: ".implode(', ', $param);
                     break;
                 case 'validate_contains_list':
-                    $resp[] = "The $field field needs contain a value from its drop down list \n";
+                    $resp[] = "The $field field needs contain a value from its drop down list <br/>";
                     break;
                 case 'validate_doesnt_contain_list':
-                    $resp[] = "The $field field contains a value that is not accepted \n";
+                    $resp[] = "The $field field contains a value that is not accepted <br/>";
                     break;
                 case 'validate_street_address':
-                    $resp[] = "The $field field needs to be a valid street address \n";
+                    $resp[] = "The $field field needs to be a valid street address <br/>";
                     break;
                 case 'validate_date':
-                    $resp[] = "The $field field needs to be a valid date \n";
+                    $resp[] = "The $field field needs to be a valid date <br/>";
                     break;
                 case 'validate_min_numeric':
-                    $resp[] = "The $field field needs to be a numeric value, equal to, or higher than $param \n";
+                    $resp[] = "The $field field needs to be a numeric value, equal to, or higher than $param <br/>";
                     break;
                 case 'validate_max_numeric':
-                    $resp[] = "The $field field needs to be a numeric value, equal to, or lower than $param \n";
+                    $resp[] = "The $field field needs to be a numeric value, equal to, or lower than $param <br/>";
                     break;
                 case 'validate_starts':
-                    $resp[] = "The $field field needs to start with $param \n";
+                    $resp[] = "The $field field needs to start with $param <br/>";
                     break;
                 case 'validate_extension':
-                    $resp[] = "The $field field can have the following extensions $param \n";
+                    $resp[] = "The $field field can have the following extensions $param <br/>";
                     break;
                 case 'validate_required_file':
-                    $resp[] = "The $field field is required \n";
+                    $resp[] = "The $field field is required <br/>";
                     break;
                 case 'validate_equalsfield':
-                    $resp[] = "The $field field does not equal $param field \n";
+                    $resp[] = "The $field field does not equal $param field <br/>";
                     break;
                 case 'validate_min_age':
-                    $resp[] = "The $field field needs to have an age greater than or equal to $param \n";
+                    $resp[] = "The $field field needs to have an age greater than or equal to $param <br/>";
                     break;
                 default:
-                    $resp[] = "The $field field is invalid \n";
+                    $resp[] = "The $field field is invalid <br/>";
             }
         }
 

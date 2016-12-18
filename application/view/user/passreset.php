@@ -15,7 +15,7 @@
         </div>
         <div class="panel-body">
 
-            <form method="POST" action="<?php echo SITE_URL; ?>user/passreset" role="form">
+            <form method="POST" action="<?php echo SURL; ?>user/passreset" role="form">
                 <input value="1" name="check_submit" type="hidden" />
                 <div class="form-group">
                     <input type="text" value="<?php if (isset($_POST['email'])) echo htmlentities($this->model->decrypt($_POST['email'])); ?>" name="email" class="form-control" size="25" placeholder="<?php echo Filtration\Core\System::translate("Email"); ?>">

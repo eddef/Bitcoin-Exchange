@@ -81,7 +81,7 @@
                         <td><?php echo System::escape($user->user_firstname); ?></td>
                         <td><?php echo System::escape($user->user_lastname); ?></td>
                         <td>
-                            <a href="<?php echo ADMIN_SITE_URL; ?>/edituser/<?php echo System::escape($user->user_id); ?>" class="btn btn-secondary btn-sm btn-icon icon-left">
+                            <a href="<?php echo ADMIN_SURL; ?>/edituser/<?php echo System::escape($user->user_id); ?>" class="btn btn-secondary btn-sm btn-icon icon-left">
                                 View User
                             </a>
                         </td>

@@ -1,6 +1,6 @@
 <div class="col-sm-12">
     <div class="btn-group pull-right m-t-15">
-        <a href="<?php echo ADMIN_SITE_URL; ?>/coins" class="btn btn-default">Manage Coin</a>
+        <a href="<?php echo ADMIN_SURL; ?>/coins" class="btn btn-default">Manage Coin</a>
     </div>
 
     <h4 class="page-title">Add Coin</h4>
@@ -9,7 +9,7 @@
 
 <div class="col-xs-12">
     <div class="panel panel-body">
-        <form role="form" action="<?php echo ADMINSITE_URL; ?>/addcoin/" method="POST" class="validate" novalidate="novalidate">
+        <form role="form" action="<?php echo ADMINSURL; ?>/addcoin/" method="POST" class="validate" novalidate="novalidate">
             <input type="hidden" name="add_coin" value="1">
             <div class="row col-margin">
                 <div class="col-xs-12 col-sm-6">

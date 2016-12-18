@@ -11,7 +11,7 @@
     DEFINE('SEO_SITE_DESCRIPTION', 'default');
     DEFINE('SEO_SITE_KEYWORDS', 'default');
     DEFINE('SURL', 'http://' . $_SERVER['HTTP_HOST'] . str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])));
-    DEFINE('ADMIN_SITE_URL', 'http://' . $_SERVER['HTTP_HOST'] . str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])).'admin');
+    DEFINE('ADMIN_SURL', 'http://' . $_SERVER['HTTP_HOST'] . str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])).'admin');
     DEFINE('COMPANY_REGISTRATION_NUMBER', '12345678');
     DEFINE('MAIN_ADDRESS_NAME', '123');
     DEFINE('MAIN_ADDRESS_STREET', 'test');
@@ -52,10 +52,10 @@
     
 return array(   
 
-    /* SITE_URL directory and folder options */
+    /* SURL directory and folder options */
     'URL' => 'http://' . $_SERVER['HTTP_HOST'] . str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])),
-    'SITE_URL' => 'http://' . $_SERVER['HTTP_HOST'] . str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])),
-    'ADMIN_SITE_URL' => 'http://' . $_SERVER['HTTP_HOST'] . str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])).'admin',
+    'SURL' => 'http://' . $_SERVER['HTTP_HOST'] . str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])),
+    'ADMIN_SURL' => 'http://' . $_SERVER['HTTP_HOST'] . str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])).'admin',
     'PATH_CONTROLLER' => realpath(dirname(__FILE__).'/../../') . '/application/controller/',
     'PATH_APPS' => realpath(dirname(__FILE__).'/../../') . '/application/',
     'PATH_VIEW' => realpath(dirname(__FILE__).'/../../') . '/application/view/',

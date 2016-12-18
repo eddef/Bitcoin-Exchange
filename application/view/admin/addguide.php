@@ -1,6 +1,6 @@
 <div class="col-sm-12">
     <div class="btn-group pull-right m-t-15">
-        <a href="<?php echo ADMIN_SITE_URL; ?>/guides" class="btn btn-default">Guides</a>
+        <a href="<?php echo ADMIN_SURL; ?>/guides" class="btn btn-default">Guides</a>
     </div>
 
     <h4 class="page-title">Add Guide</h4>
@@ -10,12 +10,12 @@
 <div class="col-xs-12">
     <div class="panel panel-default">
         <div class="panel-body">
-            <form role="form" method="post" action="<?php echo ADMIN_SITE_URL; ?>/insertguide">
+            <form role="form" method="post" action="<?php echo ADMIN_SURL; ?>/insertguide">
                 <div class="form-group">
                     <input name="title" type="text" class="form-control" placeholder="<?php echo Filtration\Core\System::translate("Enter a Title for user guide"); ?>">
                 </div>
                 <div class="form-group">	
-                    <input name="SITE_URL" type="text" class="form-control" placeholder="<?php echo Filtration\Core\System::translate("Enter a url for user guide"); ?>">
+                    <input name="SURL" type="text" class="form-control" placeholder="<?php echo Filtration\Core\System::translate("Enter a url for user guide"); ?>">
                 </div>
 
                 <div class="form-group">

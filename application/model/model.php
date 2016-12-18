@@ -23,9 +23,9 @@ class Model {
             $updateuser->execute(array($user));
             $deleteactivation = $this->db->prepare("DELETE FROM emailactivate WHERE email=? AND code=? ");
             $deleteactivation->execute(array($user, $code));
-            header('location: ' . SITE_URL . '/dashboard');
+            header('location: ' . SURL . '/dashboard');
         }
-        header('location: ' . SITE_URL . '/dashboard');
+        header('location: ' . SURL . '/dashboard');
     }
 
    
@@ -69,10 +69,10 @@ class Model {
     }
 
 
-    public function Getguides($SITE_URL) {
-        if (preg_match('/^[-a-zA-Z ]+$/', $SITE_URL)) {
-            $getguide = $this->db->prepare("SELECT message FROM userguides WHERE SITE_URL=?");
-            $getguide->execute(array($SITE_URL));
+    public function Getguides($SURL) {
+        if (preg_match('/^[-a-zA-Z ]+$/', $SURL)) {
+            $getguide = $this->db->prepare("SELECT message FROM userguides WHERE SURL=?");
+            $getguide->execute(array($SURL));
             return $getguide->fetch();
         }
     }
@@ -84,14 +84,14 @@ class Model {
         //checkbalance
         //make sure their amount is more than 0.0001
         $minval = explode('.', $amount);
-        if (strlen($minval[1]) > 4): header('location: ' . SITE_URL . 'transfer/withdraw?error=4');
+        if (strlen($minval[1]) > 4): header('location: ' . SURL . 'transfer/withdraw?error=4');
             exit();
         endif;
         $balance = $this->db->prepare("SELECT " . $coin . " FROM user WHERE username=?");
         $balance->execute(array($_SESSION['user']));
         $userbalance = $balance->fetch();
         $validate = $startcoin->validateaddress($withdrawaddress);
-        if ($validate['isvalid'] == false): header('location: ' . SITE_URL . 'transfer/withdraw?error=3');
+        if ($validate['isvalid'] == false): header('location: ' . SURL . 'transfer/withdraw?error=3');
             die();
         endif;
         if ($userbalance->$coin >= $amount && isset($withdrawaddress)) {
@@ -133,13 +133,13 @@ class Model {
 
 
 
-    public function sitenews($SITE_URL) {
+    public function sitenews($SURL) {
         $news = $this->db->prepare("SELECT * FROM news WHERE page=? OR page=? ORDER BY date DESC");
-        $news->execute(array($SITE_URL, 'all'));
+        $news->execute(array($SURL, 'all'));
         $sitesnews = $news->fetch();
         if ($sitesnews):
             if ($sitesnews->enabled == 1):
-                if ($SITE_URL == $sitesnews->page):
+                if ($SURL == $sitesnews->page):
                     echo '<div class="alert alert-info col-sm-6 col-sm-offset-3">' . $sitesnews->title . '</div>';
                 endif;
             endif;

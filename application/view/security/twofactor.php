@@ -12,7 +12,7 @@
             </div>
 
             <div class="col-sm-8">';
-                <form action="<?php echo SITE_URL; ?>security/twofactor_action" method="POST">
+                <form action="<?php echo SURL; ?>security/twofactor_action" method="POST">
                     <?php echo Filtration\Core\System::translate("Authentication Key"); ?>
                     <input name='2key' type='text' class='form-control' value="<?php echo $this->secret; ?>">
 			 </div>

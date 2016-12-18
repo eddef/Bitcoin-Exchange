@@ -3,7 +3,7 @@
         <h3 class="panel-title"><?php echo Filtration\Core\System::translate("Withdraw"); ?></h3>
     </div>
     <div class="panel-body">
-        <form action="<?php echo SITE_URL; ?>coins/withdraw" Method="GET">
+        <form action="<?php echo SURL; ?>coins/withdraw" Method="GET">
             <input type="hidden" name="coin" value="<?php echo System::escape($this->market); ?>">
             <div class="col-sm-4 col-xs-12">
                 <p>
@@ -24,7 +24,7 @@
                             </button>
                             <ul class="dropdown-menu dropdown-info no-spacing">
                                 <li>
-                                    <a href="<?php echo SITE_URL; ?>transfer/payees">
+                                    <a href="<?php echo SURL; ?>transfer/payees">
                                         <?php echo Filtration\Core\System::translate("Manage Payees"); ?>
                                     </a>
                                 </li>

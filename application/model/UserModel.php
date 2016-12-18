@@ -246,8 +246,6 @@ Class UserModel
         // hash pass
         $hashed_password = password_hash(Request::post('password'), PASSWORD_DEFAULT); //  I need to add a cost to this....
         
-
-        // okay, time to register 'em
 		// iniate the database
         $database = DatabaseFactory::getFactory()->getConnection();
 		

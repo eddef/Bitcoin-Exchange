@@ -9,7 +9,7 @@
             $("#trades").dataTable({
                 "dom": 'T<"clear">lfrtip',
                 "tableTools": {
-                    "sSwfPath": "<?php echo SITE_URL; ?>js/datatables/tabletools/copy_csv_xls_pdf.swf"
+                    "sSwfPath": "<?php echo SURL; ?>js/datatables/tabletools/copy_csv_xls_pdf.swf"
                 }
             });
         });
@@ -41,7 +41,7 @@
                             <td><?php echo System::escape($r->trade_buysell); ?></td>
                             <td><?php echo System::escape($r->trade_date); ?></td>
                             <td>                            
-                                <a href="<?php echo SITE_URL; ?>dashboard/invoice/<?php echo System::escape($r->trade_id); ?>" class=" viewinvoicebtn btn-success btn-sm btn-icon icon-left">
+                                <a href="<?php echo SURL; ?>dashboard/invoice/<?php echo System::escape($r->trade_id); ?>" class=" viewinvoicebtn btn-success btn-sm btn-icon icon-left">
                                     <?php echo Filtration\Core\System::translate("View Invoice"); ?>
                                 </a>
                             </td>

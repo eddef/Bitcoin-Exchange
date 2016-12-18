@@ -117,7 +117,7 @@ class System extends Controller
 		$activity_type = isset($acti_type) ? 'activity' : 'system';
 		
 		//should it go to a specific page?
-		$goto_SITE_URL = isset($goto) ? $goto : 'n/a';
+		$goto_SURL = isset($goto) ? $goto : 'n/a';
 		
 		//browser information
 		$browser = $_SERVER['HTTP_USER_AGENT']; 
@@ -148,7 +148,7 @@ class System extends Controller
 								action_tracking_ip,
 								action_tracking_user_cookies,
 								action_tracking_type,
-								action_tracking_goto_SITE_URL
+								action_tracking_goto_SURL
 							 ) 
 				VALUES      (
 				                ?, 
@@ -175,7 +175,7 @@ class System extends Controller
 									   $ip, 
 									   $user_cookie, 
 									   $activity_type, 
-									   $goto_SITE_URL));
+									   $goto_SURL));
 	}	
 
 	

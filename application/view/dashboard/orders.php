@@ -83,11 +83,11 @@
     {
         $("#deleteorderb").click(function ()
         {
-            $("#deleteorder").attr('href', '<?php echo SITE_URL; ?>dashboard/delete_orders/?id=' + $(this).attr('id') + '/buy');
+            $("#deleteorder").attr('href', '<?php echo SURL; ?>dashboard/delete_orders/?id=' + $(this).attr('id') + '/buy');
         });
         $("#deleteorders").click(function ()
         {
-            $("#deleteordersl").attr('href', '<?php echo SITE_URL; ?>dashboard/delete_orders/' +  $(this).attr('id') + '/sell');
+            $("#deleteordersl").attr('href', '<?php echo SURL; ?>dashboard/delete_orders/' +  $(this).attr('id') + '/sell');
         });
     });
 </script>

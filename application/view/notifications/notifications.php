@@ -20,10 +20,10 @@
                                         <a href="#" class="star">
                                             <i class="fa-star-empty"></i>
                                         </a>
-                                        <a href="<?php echo SITE_URL; ?>notification/view/<?php echo System::escape($notification->notification_id); ?>" class="col-name"><?php echo System::escape($notification->notification_whofrom); ?></a>
+                                        <a href="<?php echo SURL; ?>notification/view/<?php echo System::escape($notification->notification_id); ?>" class="col-name"><?php echo System::escape($notification->notification_whofrom); ?></a>
                                     </td>
                                     <td class="col-subject">
-                                        <a href="<?php echo SITE_URL; ?>notification/view/<?php echo System::escape($notification->notification_id); ?>">
+                                        <a href="<?php echo SURL; ?>notification/view/<?php echo System::escape($notification->notification_id); ?>">
                                             <?php echo System::escape($notification->notification_title); ?>
                                         </a>
                                     </td>

@@ -1,6 +1,6 @@
-<script src="<?php echo SITE_URL; ?>js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-<script src="<?php echo SITE_URL; ?>js/jvectormap/regions/jquery-jvectormap-world-mill-en.js"></script>
-<script src="<?php echo SITE_URL; ?>js/xenon-widgets.js"></script>
+<script src="<?php echo SURL; ?>js/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="<?php echo SURL; ?>js/jvectormap/regions/jquery-jvectormap-world-mill-en.js"></script>
+<script src="<?php echo SURL; ?>js/xenon-widgets.js"></script>
 
 <div class="panel col-sm-9 col-xs-12">
     <div class="panel-heading">

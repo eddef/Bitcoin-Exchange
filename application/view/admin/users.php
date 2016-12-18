@@ -23,7 +23,7 @@
                                 <span><?php echo Filtration\Core\System::escape($user->user_role); ?></span> 
                             </td>
                             <td>
-                                <a href="<?php echo ADMIN_SITE_URL; ?>/edituser/<?php Filtration\Core\System::escape($user->user_id); ?>" class="name">
+                                <a href="<?php echo ADMIN_SURL; ?>/edituser/<?php Filtration\Core\System::escape($user->user_id); ?>" class="name">
                                     <?php echo Filtration\Core\System::escape($user->user_firstname); ?> <?php echo Filtration\Core\System::escape($user->user_lastname); ?>
                                 </a> 
                             </td>
@@ -35,14 +35,14 @@
                             </td>
                             <td class="action-links"> 
                                 <?php if (Filtration\Model\UserModel::user_role('admin') == true): ?>
-                                    <a href="<?php echo ADMIN_SITE_URL; ?>/edituser/<?php echo Filtration\Core\System::escape($user->user_id); ?>" class="edit"> 
+                                    <a href="<?php echo ADMIN_SURL; ?>/edituser/<?php echo Filtration\Core\System::escape($user->user_id); ?>" class="edit"> 
                                         <i class="fa fa-pencil"></i> Edit Profile
                                     </a>
-                                    <a href="<?php echo ADMIN_SITE_URL; ?>/deleteuser/<?php echo Filtration\Core\System::escape($user->user_id); ?>" class="delete"> 
+                                    <a href="<?php echo ADMIN_SURL; ?>/deleteuser/<?php echo Filtration\Core\System::escape($user->user_id); ?>" class="delete"> 
                                         <i class="fa fa-trash"></i> Delete
                                     </a>
                                 <?php elseif (UserModel::user_role('staff') == true): ?>
-                                    <a href="<?php echo ADMIN_SITE_URL; ?>/edituser/<?php echo Filtration\Core\System::escape($user->user_id); ?>" class="delete"> 
+                                    <a href="<?php echo ADMIN_SURL; ?>/edituser/<?php echo Filtration\Core\System::escape($user->user_id); ?>" class="delete"> 
                                         <i class="fa fa-pencil"></i> View user
                                     </a>
                                 <?php endif; ?>

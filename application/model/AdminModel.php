@@ -409,7 +409,7 @@ Class AdminModel
 				(
 					page_title,
 					page_body,
-					page_SITE_URL
+					page_SURL
 				) 
 				VALUES
 				(
@@ -529,27 +529,27 @@ Class AdminModel
         $deletenews->execute(array($id));
 		
 	}
-    public static function updateguide($SITE_URL, $message) 
+    public static function updateguide($SURL, $message) 
 	{
-        if (preg_match('/^[-a-zA-Z ]+$/', $SITE_URL)) {
-            $getguide = $this->db->prepare("UPDATE userguides SET message=? WHERE SITE_URL=?");
-            $getguide->execute(array($message, $SITE_URL));
-            header('LOCATION: ' . ADMINSITE_URL . '/editguide/?SITE_URL=' . $SITE_URL);
+        if (preg_match('/^[-a-zA-Z ]+$/', $SURL)) {
+            $getguide = $this->db->prepare("UPDATE userguides SET message=? WHERE SURL=?");
+            $getguide->execute(array($message, $SURL));
+            header('LOCATION: ' . ADMINSURL . '/editguide/?SURL=' . $SURL);
         }
     }
 
-	public static function addguide($title, $message, $SITE_URL) {
-        if (preg_match('/^[-a-zA-Z ]+$/', $SITE_URL)) {
+	public static function addguide($title, $message, $SURL) {
+        if (preg_match('/^[-a-zA-Z ]+$/', $SURL)) {
             $date = strtotime("now");
-            $addguide = $this->db->prepare("INSERT INTO userguides(title,message,date,SITE_URL) VALUES(?,?,?,?)");
+            $addguide = $this->db->prepare("INSERT INTO userguides(title,message,date,SURL) VALUES(?,?,?,?)");
             $addguide->execute(array(
                 $title,
                 $message,
                 $date,
-                $SITE_URL));
-            header('location: ' . ADMINSITE_URL . '/guides/');
+                $SURL));
+            header('location: ' . ADMINSURL . '/guides/');
         } else {
-            header('location: ' . ADMINSITE_URL . '/addguide');
+            header('location: ' . ADMINSURL . '/addguide');
         }
     }
 }

@@ -137,7 +137,7 @@
                         </div>
                         <tr>
                             <td width="15% ">
-                                <a href="<?php echo SITE_URL; ?>user/twofactor" class="btn btn-success">
+                                <a href="<?php echo SURL; ?>user/twofactor" class="btn btn-success">
                                     <?php echo Filtration\Core\System::translate("Enable 2factor"); ?>
                                 </a>
                             </td>

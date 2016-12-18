@@ -44,7 +44,7 @@
 									 non-whitelisted IP. You can add and remove IP addresses. It is not recommended for you
 									 to use if you have a dynamic IP"); ?>
 			<div class="form-group" style="margin-top:25px;">
-				<form action="<?php echo SITE_URL; ?>security/addwhitelistip" method="POST">
+				<form action="<?php echo SURL; ?>security/addwhitelistip" method="POST">
 					<div class="input-group"> 
 						<span class="input-group-btn"> 
 							<button class="btn btn-info" type="submit">Add</button> 
@@ -72,7 +72,7 @@
 								<tr role="row" id="ip-<?php echo System::escape($whitelistip); ?>" class="odd">
 									<td><?php echo System::escape($whitelistip); ?> </td>
 									<td>
-										<a href="<?php echo SITE_URL; ?>security/deleteipwhitelist/<?php echo System::escape($whitelistip); ?>" id="<?php echo System::escape($whitelistip); ?>" class="btn btn-danger remove btn-sm btn-icon icon-left"><?php echo Filtration\Core\System::translate("Delete"); ?></a>
+										<a href="<?php echo SURL; ?>security/deleteipwhitelist/<?php echo System::escape($whitelistip); ?>" id="<?php echo System::escape($whitelistip); ?>" class="btn btn-danger remove btn-sm btn-icon icon-left"><?php echo Filtration\Core\System::translate("Delete"); ?></a>
 									</td>
 								</tr>
 							<?php

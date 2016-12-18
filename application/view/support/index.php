@@ -2,30 +2,30 @@
     <div class="row ">
         <div class="col-sm-3 mailbox-left">
             <div class="mailbox-sidebar">
-                <a href="<?php echo SITE_URL; ?>support/newticket" class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right">
+                <a href="<?php echo SURL; ?>support/newticket" class="btn btn-block btn-secondary btn-icon btn-icon-standalone btn-icon-standalone-right">
                     <i class="fa fa-pencil"></i>
                     <span><?php echo Filtration\Core\System::translate("Open Ticket"); ?></span> 
                 </a>
                 <ul class="list-unstyled mailbox-list">
                     <li class="active"> 
-                        <a href="<?php echo SITE_URL; ?>support/"><?php echo Filtration\Core\System::translate("All Tickets"); ?>
+                        <a href="<?php echo SURL; ?>support/"><?php echo Filtration\Core\System::translate("All Tickets"); ?>
                             <span class="pull-right"><?php echo $all; ?></span> 
                         </a> 
                     </li>
                     <li> 
-                        <a href="<?php echo SITE_URL; ?>support/?type=open">
+                        <a href="<?php echo SURL; ?>support/?type=open">
                             <?php echo Filtration\Core\System::translate("Open Tickets"); ?>
                         </a> 
                     </li>
                     <li> 
-                        <a href="<?php echo SITE_URL; ?>support/?type=closed">
+                        <a href="<?php echo SURL; ?>support/?type=closed">
                             <?php echo Filtration\Core\System::translate("Closed Tickets"); ?>
                         </a> 
                     </li>
 
                     <?php if ($this->model->isstaff() == true): ?> 
                         <li> 
-                            <a href="<?php echo SITE_URL; ?>support/admin">
+                            <a href="<?php echo SURL; ?>support/admin">
                                 <?php echo Filtration\Core\System::translate("Admin"); ?>
                             </a> 
                         </li> 
@@ -60,7 +60,7 @@
                     <?php foreach ($tickets as $ticket): ?>
                         <tr>
                             <td><?php echo $ticket->id; ?></td>
-                            <td><?php echo '<a href="' . SITE_URL . 'support/ticket/?id=' . $ticket->id . '">' . htmlspecialchars($ticket->title, ENT_QUOTES) . '</a>'; ?></td>
+                            <td><?php echo '<a href="' . SURL . 'support/ticket/?id=' . $ticket->id . '">' . htmlspecialchars($ticket->title, ENT_QUOTES) . '</a>'; ?></td>
                             <?php if ($this->model->isstaff() == true): ?> 
                                 <td><?php echo $ticket->user; ?></td>
                             <?php endif; ?>

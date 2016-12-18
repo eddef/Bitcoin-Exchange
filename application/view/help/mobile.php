@@ -1,6 +1,6 @@
 <style>
     .mobileBgImg {
-        background: SITE_URL("<?php echo SITE_URL; ?>/img/mobile.jpg") center repeat scroll transparent;
+        background: SURL("<?php echo SURL; ?>/img/mobile.jpg") center repeat scroll transparent;
         overflow: hidden;
         height: 784px;
         margin-top: -8px;
@@ -18,7 +18,7 @@
     }
 
     .androidButton {
-        background: SITE_URL("<?php echo SITE_URL; ?>/img/androidEn.png?1") center repeat scroll transparent;
+        background: SURL("<?php echo SURL; ?>/img/androidEn.png?1") center repeat scroll transparent;
         width: 150px;
         height: 46px;
         cursor: pointer;
@@ -26,7 +26,7 @@
         margin-left: 255px;
     }
     .iphoneButton {
-        background: SITE_URL("<?php echo SITE_URL; ?>/img/iphoneEn.png?1") center repeat scroll transparent;
+        background: SURL("<?php echo SURL; ?>/img/iphoneEn.png?1") center repeat scroll transparent;
         width: 150px;
         height: 46px;
         cursor: pointer;

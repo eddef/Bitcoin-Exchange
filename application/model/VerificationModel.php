@@ -63,7 +63,7 @@ Class VerificationModel
             echo '
 				<div class="row row-centered"><div class="col-md-4 col-md-offset-4">
 			    <div class="alert alert-info"><strong>'. Filtration\Core\System::translate("Secure account. Enable Two factor Authentication").'
-				<a href="' . SITE_URL . 'user/twofactor">'.Filtration\Core\System::translate("Here"). '</a></strong></div></div></div>';
+				<a href="' . SURL . 'user/twofactor">'.Filtration\Core\System::translate("Here"). '</a></strong></div></div></div>';
         }
     }
 
@@ -96,12 +96,12 @@ Class VerificationModel
         $j = 0; 
         
 		//if folder doesn't exist create it
-		if (!file_exists(SITE_URL_PUB . "/userverify/" . Session::get('user_id') . "/")) {
-            mkdir(SITE_URL_PUB . "/userverify/" . Session::get('user_id'). "/", 0777);
+		if (!file_exists(SURL_PUB . "/userverify/" . Session::get('user_id') . "/")) {
+            mkdir(SURL_PUB . "/userverify/" . Session::get('user_id'). "/", 0777);
         }
        
 	    // Declaring Path for uploaded images.
-	    $target_path = SITE_URL_PUB . "/userverify/" . Session::get('user_id') . "/"; 
+	    $target_path = SURL_PUB . "/userverify/" . Session::get('user_id') . "/"; 
         
 		for ($i = 0; $i < count($_FILES['file']['name']); $i++)
 		{

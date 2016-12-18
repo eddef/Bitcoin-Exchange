@@ -11,7 +11,7 @@
         </div>
     </div>
     <div class="panel-body">
-        <form role="form" action="<?php echo ADMINSITE_URL; ?>/updatesettings/" method="POST" class="validate" novalidate="novalidate">
+        <form role="form" action="<?php echo ADMINSURL; ?>/updatesettings/" method="POST" class="validate" novalidate="novalidate">
 
             <div class="row col-margin">
                 <div class="col-xs-12 col-sm-6">
@@ -37,7 +37,7 @@
                         <div class="input-group-addon">
                             <i class="linecons-user"></i>
                         </div>
-                        <input type="text" name="siteSITE_URL" class="form-control" data-validate="required" value="<?php echo $setting->siteSITE_URL; ?>" data-message-required="<?php echo Filtration\Core\System::translate(" Please enter your Website SITE_URL "); ?>">
+                        <input type="text" name="siteSURL" class="form-control" data-validate="required" value="<?php echo $setting->siteSURL; ?>" data-message-required="<?php echo Filtration\Core\System::translate(" Please enter your Website SURL "); ?>">
                     </div>
                 </div>
                 <div class="col-xs-12 col-sm-6">

@@ -1,4 +1,4 @@
-var site_url = "http://localhost/";
+var SURL = "http://localhost/";
 var alert_close = '<button type="button" class="close alert-close"><i class="fa fa-close"></i></button>';
 
 function ajax_error(data)
@@ -31,7 +31,7 @@ $(function()
             {
                 if(data.success)
                 {
-                   location.href = site_url + "api/api/";
+                   location.href = SURL + "api/api/";
                 }
                 else
                 {
@@ -99,7 +99,7 @@ $(function()
             {
                 if(data.success)
                 {
-                   location.href = site_url + "dashboard";
+                   location.href = SURL + "dashboard";
                 }
                 else
                 {
@@ -130,7 +130,7 @@ $(function()
             {
                 if(data.success)
                 {
-                   location.href = site_url + "dashboard";
+                   location.href = SURL + "dashboard";
                 }
                 else
                 {

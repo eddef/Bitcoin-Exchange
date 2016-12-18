@@ -1,6 +1,6 @@
 <div class="col-sm-12">
     <div class="btn-group pull-right m-t-15">
-        <a href="<?php echo ADMIN_SITE_URL; ?>/addcoin" class="btn btn-default">Add Coin</a>
+        <a href="<?php echo ADMIN_SURL; ?>/addcoin" class="btn btn-default">Add Coin</a>
     </div>
 
     <h4 class="page-title">Coins</h4>
@@ -37,10 +37,10 @@
                             ?>
                         </td>
                         <td>
-                            <a href="<?php echo ADMIN_SITE_URL; ?>/editcoin/<?php echo Filtration\Core\System::escape($coins->coin_id); ?>" class="btn btn-info btn-sm btn-icon icon-left">
+                            <a href="<?php echo ADMIN_SURL; ?>/editcoin/<?php echo Filtration\Core\System::escape($coins->coin_id); ?>" class="btn btn-info btn-sm btn-icon icon-left">
                                 Edit
                             </a>
-                            <a href="<?php echo ADMIN_SITE_URL;?>/deletecoin/<?php echo Filtration\Core\System::escape($coins->coin_id); ?>" class="btn btn-danger btn-sm btn-icon icon-left">
+                            <a href="<?php echo ADMIN_SURL;?>/deletecoin/<?php echo Filtration\Core\System::escape($coins->coin_id); ?>" class="btn btn-danger btn-sm btn-icon icon-left">
                                 Delete
                             </a>
                         </td>

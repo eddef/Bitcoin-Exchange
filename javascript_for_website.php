@@ -16,7 +16,7 @@ $(function()
             {
                 if(data.success)
                 {
-                    location.href = "<?php echo ADMIN_SITE_URL; ?>";
+                    location.href = "<?php echo ADMIN_SURL; ?>";
                 }
                 else
                 {

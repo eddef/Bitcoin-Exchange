@@ -1,4 +1,4 @@
-<script src="<?php echo SITE_URL; ?>js/imgverify.js"></script>
+<script src="<?php echo SURL; ?>js/imgverify.js"></script>
 <style>
     #noerror {
         color: green;
@@ -44,7 +44,7 @@
 			
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <form action="<?php echo SITE_URL; ?>user/veridetails" class="validate" method="post" novalidate="novalidate" enctype="multipart/form-data">
+                    <form action="<?php echo SURL; ?>user/veridetails" class="validate" method="post" novalidate="novalidate" enctype="multipart/form-data">
                         <div class="row col-margin">
                             <div class="col-xs-12 col-sm-6">
                                 <div class="form-group">

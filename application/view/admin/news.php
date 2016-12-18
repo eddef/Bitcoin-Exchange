@@ -13,12 +13,12 @@
                     <div class="panel-body">
                         <?php echo Filtration\Core\System::escape($news->news_message); ?>
                         <br/>
-                        <a class="btn btn-success pull-right" value="" href="<?php echo ADMIN_SITE_URL; ?>/editnews/<?php echo Filtration\Core\System::escape($news->news_id); ?>">Edit news</a>
+                        <a class="btn btn-success pull-right" value="" href="<?php echo ADMIN_SURL; ?>/editnews/<?php echo Filtration\Core\System::escape($news->news_id); ?>">Edit news</a>
                         <a class="btn btn-danger pull-right" id="delete<?php echo System::escape($news->news_id); ?>" value="">Delete news</a>
                         <script>
                             document.getElementById('delete<?php echo $news->id; ?>').onclick = function () {
                                 if (confirm('Are you sure?')) {
-                                    parent.location = '<?php echo ADMINSITE_URL . "/deletenews/" . System::escape($news->id); ?>';
+                                    parent.location = '<?php echo ADMINSURL . "/deletenews/" . System::escape($news->id); ?>';
                                 }
                             };
                         </script>

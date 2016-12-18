@@ -12,7 +12,7 @@
 
                     <div class="mail-single-header-options">
 
-                        <a href="<?php echo SITE_URL; ?>notification/delete_message/<?php echo System::escape($this->message->message_id); ?>" class="btn btn-gray btn-icon delete_message">
+                        <a href="<?php echo SURL; ?>notification/delete_message/<?php echo System::escape($this->message->message_id); ?>" class="btn btn-gray btn-icon delete_message">
                             <i class="fa-trash"></i>
                         </a>
                     </div>
@@ -41,7 +41,7 @@
             <div class="mailbox-sidebar">
                 <ul class="list-unstyled mailbox-list">
                     <li>
-                        <a href="<?php echo SITE_URL; ?>/user/messages/">
+                        <a href="<?php echo SURL; ?>/user/messages/">
                             <?php  echo Filtration\Core\System::translate("All"); ?>
                             <label class="label label-info pull-right">
                                 <?php echo count(NotificationModel::messagecount()); ?>
@@ -49,12 +49,12 @@
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo SITE_URL; ?>/user/messages?type=news">
+                        <a href="<?php echo SURL; ?>/user/messages?type=news">
                             <?php echo Filtration\Core\System::translate("News"); ?>	
                         </a>
                     </li>
                     <li>
-                        <a href="<?php echo SITE_URL ?>/user/messages?type=account">
+                        <a href="<?php echo SURL ?>/user/messages?type=account">
                             <?php echo Filtration\Core\System::translate("Account"); ?>
                         </a>
                     </li>
@@ -77,7 +77,7 @@ $(function()
             {
                 if(data.success)
                 {
-                    location.href = "<?php echo SITE_URL; ?>notification/messages";
+                    location.href = "<?php echo SURL; ?>notification/messages";
                 }else{
                     $('.error_message').html(data.error + alert_close).show();
                 }

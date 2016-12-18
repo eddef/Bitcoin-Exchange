@@ -134,7 +134,7 @@
                         <input type="checkbox" name="terms" value="" id="terms" data-validate="required">
                         <?php echo Filtration\Core\System::translate("I agree to"); ?>
                     </label>
-                     <a href="<?php echo SITE_URL; ?>pages/?id=tos">
+                     <a href="<?php echo SURL; ?>pages/?id=tos">
                         <?php echo Filtration\Core\System::translate("Terms and Conditions"); ?>
                     </a>
                 </div>

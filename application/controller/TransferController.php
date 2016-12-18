@@ -113,13 +113,13 @@ class TransferController extends \Filtration\Core\Controller
         // Read the post from OKPAY and add 'ok_verify' 
         $req = 'ok_verify=true';
         foreach ($_POST as $key => $value) {
-            $value = SITE_URLencode(stripslashes($value));
+            $value = SURLencode(stripslashes($value));
             $req .= "&$key=$value";
         }
         // Post back to OKPAY to validate 
         $header .= "POST /ipn-verify.html HTTP/1.0\r\n";
         $header .= "Host: www.okpay.com\r\n";
-        $header .= "Content-Type: application/x-www-form-SITE_URLencoded\r\n";
+        $header .= "Content-Type: application/x-www-form-SURLencoded\r\n";
         $header .= "Content-Length: " . strlen($req) . "\r\n\r\n";
         $fp = fsockopen('www.okpay.com', 80, $errno, $errstr, 30);
 

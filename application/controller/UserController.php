@@ -72,6 +72,43 @@ class UserController extends \Filtration\Core\Controller
 
     public function register_action() 
 	{
+        // Let's define the rules and filters
+        $rules = array(
+            'username'    => 'required',
+            'email' => 'valid_email|required',
+            'password'    => 'required',
+            'password2'    => 'required',
+            'securityq1'    => 'required',
+            'securityq2'    => 'required',
+            'securitya1'    => 'required',
+            'securitya2'    => 'required',
+
+        );
+        
+        // Readible array
+        $readible = 
+        [            
+            'securityq1'    => 'Security Queston 1',
+            'securityq2'    => 'Security Queston 2',
+            'securitya1'    => 'Security Answer 1',
+            'securitya2'    => 'Security Answer 2'
+        ];
+
+        // readible inputs
+        FormValidation::set_field_names($readible);
+        
+        //validate the info
+        $validated = FormValidation::is_valid($_POST, $rules);
+        
+        // Check if validation was successful
+        if($validated !== TRUE):    
+                                   
+            //exit with an error
+            exit(Alert::error(false, true, $validated));
+
+        endif;
+
+
         UserModel::register();
     }
 	
@@ -204,7 +241,7 @@ class UserController extends \Filtration\Core\Controller
         $usercode = isset($_POST['2code']) ? $_POST['2code'] : '';
         $oneCode = $ga->getCode($secret);
         if ($user->twofactor == 1) {
-            header('location: ' . SITE_URL . 'dashboard');
+            header('location: ' . SURL . 'dashboard');
             exit();
         }
         require APP . 'views/user/twofactor.php';

@@ -130,13 +130,13 @@ class AdminController extends \Filtration\Core\Controller {
         $this->View->Render('admin/addguide');
     }
 
-    public function editguide($SITE_URL = null) 
+    public function editguide($SURL = null) 
 	{
 		//make sure they're an admin
 		AdminModel::auth();
 		
 		//get the guides info
-        $editguide = SupportModel::viewguide($SITE_URL);
+        $editguide = SupportModel::viewguide($SURL);
         
 		$this->View->Render('admin/editguide');
     }
@@ -155,7 +155,7 @@ class AdminController extends \Filtration\Core\Controller {
 		AdminModel::auth();
 		
 		//add the guide
-        $addguide = AdminModel::addguide($title, $message, $SITE_URL);
+        $addguide = AdminModel::addguide($title, $message, $SURL);
     }
 
     public function verifyusers() 
@@ -376,19 +376,19 @@ class AdminController extends \Filtration\Core\Controller {
     {
         SESSION_START();
         if (!$this->model->isadmin() == true) {
-            header('location: ' . SITE_URL . '/index');
+            header('location: ' . SURL . '/index');
         }
         $user = isset($_GET['user']) ? $_GET['user'] : '';
         if (!$user == null) {
             $invalidid = $this->model->invalidid($user);
-            header('location: ' . ADMINSITE_URL . '/edituser/?id=' . $user);
+            header('location: ' . ADMINSURL . '/edituser/?id=' . $user);
         }
     }
 
         public function deletecoin() {
         SESSION_START();
         if (!$this->model->isadmin() == true) {
-            header('location: ' . SITE_URL . '/index');
+            header('location: ' . SURL . '/index');
         }
         $id = isset($_GET['id']) ? $_GET['id'] : '';
         $coinname = isset($_GET['coin']) ? $_GET['coin'] : '';
@@ -397,20 +397,20 @@ class AdminController extends \Filtration\Core\Controller {
             $deletecoin->execute(array($id));
             $deletecol = $this->db->prepare("ALTER TABLE user DROP COLUMN " . htmlentities($coinname) . "");
             $deletecol->execute();
-            header('location: ' . ADMINSITE_URL . '/coins');
+            header('location: ' . ADMINSURL . '/coins');
         endif;
     }
 
     public function validid() {
         SESSION_START();
         if (!$this->model->isadmin() == true) {
-            header('location: ' . SITE_URL . '/index');
+            header('location: ' . SURL . '/index');
         }
         $user = isset($_GET['user']) ? $_GET['user'] : '';
 
         if (!$user == null) {
             $validid = $this->model->validid($user);
-            header('location: ' . ADMINSITE_URL . '/edituser/?id=' . $user);
+            header('location: ' . ADMINSURL . '/edituser/?id=' . $user);
         }
     }
 

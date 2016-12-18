@@ -21,7 +21,7 @@
                 </tr>
                 <tr>
                     <td><strong><?php echo Filtration\Core\System::translate("API URL"); ?></strong></td>
-                    <td><?php echo Filtration\Core\System::translate("Depending on the API request depends on the SITE_URL"); ?></td>
+                    <td><?php echo Filtration\Core\System::translate("Depending on the API request depends on the SURL"); ?></td>
                 </tr>
             </tbody></table>
     </div>
@@ -41,7 +41,7 @@
                 <tr>
                     <td><strong><?php echo Filtration\Core\System::translate("btc_usd"); ?></strong></td>
                     <td><?php echo Filtration\Core\System::translate("This is the market, you can replace that value with a valid market in our system"); ?>
-                        <a href="<?php echo SITE_URL; ?>api/ticker?ticker=btc_usd"> <b>api/ticker?ticker=btc_usd</b> </a>
+                        <a href="<?php echo SURL; ?>api/ticker?ticker=btc_usd"> <b>api/ticker?ticker=btc_usd</b> </a>
                     </td>
                 </tr>
                 <tr>
@@ -93,8 +93,8 @@
             <tbody>
                 <tr>
                     <td><strong><?php echo Filtration\Core\System::translate("API URL"); ?></strong></td>
-                    <td><?php echo Filtration\Core\System::translate("Send a POST request to the corresponding SITE_URL "); ?>
-                        <a href="<?php echo SITE_URL; ?>api/orders/"> <b>api/orders/</b> </a> </a></td>
+                    <td><?php echo Filtration\Core\System::translate("Send a POST request to the corresponding SURL "); ?>
+                        <a href="<?php echo SURL; ?>api/orders/"> <b>api/orders/</b> </a> </a></td>
                     </td>
                 </tr>
                 <tr>
@@ -131,8 +131,8 @@
             <tbody>
                 <tr>
                     <td><strong><?php echo Filtration\Core\System::translate("API URL"); ?></strong></td>
-                    <td><?php echo Filtration\Core\System::translate("Send a POST request to the corresponding SITE_URL "); ?>
-                        <a href="<?php echo SITE_URL; ?>api/orders/"> <b>api/transactions/</b> </a> </a></td>
+                    <td><?php echo Filtration\Core\System::translate("Send a POST request to the corresponding SURL "); ?>
+                        <a href="<?php echo SURL; ?>api/orders/"> <b>api/transactions/</b> </a> </a></td>
                     </td>
                 </tr>
                 <tr>
@@ -163,8 +163,8 @@
             <tbody>
                 <tr>
                     <td><strong><?php echo Filtration\Core\System::translate("API URL"); ?></strong></td>
-                    <td><?php echo Filtration\Core\System::translate("Send a POST request to the corresponding SITE_URL "); ?>
-                        <a href="<?php echo SITE_URL; ?>api/deleteorder/"> <b>api/deleteorder/</b> </a> </a></td>
+                    <td><?php echo Filtration\Core\System::translate("Send a POST request to the corresponding SURL "); ?>
+                        <a href="<?php echo SURL; ?>api/deleteorder/"> <b>api/deleteorder/</b> </a> </a></td>
                     </td>
                 </tr>
                 <tr>
@@ -200,7 +200,7 @@
     $json_data = json_encode(array('data'=>$data, 'sig'=>$sig, 'pubkey'=>$public_key));
     <br/><br/>
     // Finally submit to api end point<br/>
-    echo SITE_URLencode($json_data);
+    echo SURLencode($json_data);
 
     </pre>
 

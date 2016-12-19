@@ -31,7 +31,7 @@ use Filtration\Model\CoinsModel;
         </div>
     </div>
     <? } ?>
-    <div class="col-sm-2 col-sm-offset-8">
+    <div class="col-sm-2 col-sm-offset-9" style="margin-bottom: 10px;">
         <select class="form-control" name="chartmarket" onchange="location = this.options[this.selectedIndex].value;">
             <option>Select Market</option>
             <?php foreach ($this->markets as $coinlinks) { ?>

@@ -29,7 +29,7 @@
     /* Mods */
     DEFINE('VOICE_COMMANDS', 'disabled');
     DEFINE('TRADING', 'enabled');
-        
+
     /* Social */
     DEFINE('TWITTER_USER', '@whoever');
     DEFINE('FACEBOOK_PAGE', '@whoever');
@@ -46,11 +46,11 @@
     DEFINE('DEFAULT_EMAIL_PWD', 'password');
     DEFINE('DEFAULT_EMAIL_PORT', '465');
     DEFINE('DEFAULT_EMAIL_SSL', 'ssl');
-    
 
 
-    
-return array(   
+
+
+return array(
 
     /* SURL directory and folder options */
     'URL' => 'http://' . $_SERVER['HTTP_HOST'] . str_replace('public', '', dirname($_SERVER['SCRIPT_NAME'])),
@@ -64,14 +64,13 @@ return array(
     'PATH_MAIN' => realpath(dirname(__FILE__).'/../../'),
     'DEFAULT_CONTROLLER' => 'home',
     'DEFAULT_ACTION' => 'index',
-    
+
     /* database stuff */
     'DB_TYPE' => 'mysql',
     'DB_HOST' => '127.0.0.1',
-    'DB_NAME' => 'exchange',
+    'DB_NAME' => 'btc',
     'DB_USER' => 'root',
-    'DB_PASS' => '',
+    'DB_PASS' => 'slarp64',
     'DB_PORT' => '3306',
     'DB_CHARSET' => 'utf8',
 );
-

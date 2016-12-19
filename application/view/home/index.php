@@ -1,7 +1,9 @@
-<?php 
+<?php
 use Filtration\Model\CoinsModel;
 ?>
 <div class="main-content">
+  <?php if(Filtration\Model\UserModel::logged_in() == true){}
+    else { ?>
     <div class="carousel slide " id="myCarousel">
         <!-- Indicators -->
         <div class="carousel-inner">
@@ -18,7 +20,7 @@ use Filtration\Model\CoinsModel;
                             </p>
                             <div class="md-btn-group">
                                 <a href="<?php echo SURL; ?>user/register" class="btn btn-large btn-success">
-                                    <?php echo Filtration\Core\System::translate("Start trading"); ?>    
+                                    <?php echo Filtration\Core\System::translate("Start trading"); ?>
                                 </a>
                                 <a href="<?php echo SURL; ?>user/login" class="btn btn-border btn-blue"><?php echo Filtration\Core\System::translate("Login"); ?></a>
                             </div>
@@ -28,6 +30,7 @@ use Filtration\Model\CoinsModel;
             </div>
         </div>
     </div>
+    <? } ?>
     <div class="col-sm-2 col-sm-offset-8">
         <select class="form-control" name="chartmarket" onchange="location = this.options[this.selectedIndex].value;">
             <option>Select Market</option>
@@ -44,7 +47,7 @@ use Filtration\Model\CoinsModel;
             <div id="liveorders" style="padding-top:55px;"></div>
         </div>
 
-        <!--close .wrapper--> 
+        <!--close .wrapper-->
     </div>
 
     <section id="top" class="contain clearfix">
@@ -95,12 +98,12 @@ use Filtration\Model\CoinsModel;
     </script>
 
 <link rel="stylesheet" href="<?php echo SURL; ?>css/custom.css" />
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script> 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://code.highcharts.com/stock/highstock.js"></script>
 <script src="https://code.highcharts.com/stock/modules/exporting.js"></script>
 <script>
 
-  
+
     $(document).ready(function () {
         $("#liveorders").load("<?php echo SURL; ?>/home/liveorders");
         var refreshId = setInterval(function () {
